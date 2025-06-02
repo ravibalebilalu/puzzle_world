@@ -21,10 +21,11 @@
                     name="characters"
                     id="id{{char.index}}"
                     class="charinput"
-                    value="{{char}}-{{char.index}}"
+                    value="{{char}}{{char.index}}"
                 />
                 <label for="id{{char.index}}" class="char{{char.index}} flexbox"
-                    >{{char}}</label
+                style="color:{% if char.char_checked %} blue {% else %} green {% endif %}"
+                    >{{char | upper}}</label
                 >
 
                 {% endfor %}
@@ -34,7 +35,9 @@
         </div>
         <div class="words flexbox">
              {% for word in words %}
-             <p class="word">{{word.word}}</p>
+             <p class="word"  
+             style="background-color:{% if word.word_checked%} #004223{% else  %} #420023 {% endif %}"
+             >{{word.word | upper}}</p>
              {% endfor %}
         </div>
        </div>

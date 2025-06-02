@@ -34,9 +34,10 @@ body{
 }
 .word{
     width: 400px;
-    font-size: 50px;
+    font-size:45px;
+    font-weight: 800;
     color: yellow;
-    background-color: #383535;
+   
     text-align: center;
     border-radius: 20px;
 }
@@ -54,6 +55,8 @@ label{
     color: green;
     height: 54px;
     width: 45px;
+     font-weight: bold;
+     font-size: 40px;
 }
 
 .charinput{

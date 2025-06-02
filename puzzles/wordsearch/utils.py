@@ -59,3 +59,41 @@ def generate_grids(puzzle, word_list):
             )
 
     return grid,word_list
+
+def process_form_data(form_data):
+    char_list,index_list = [],[]
+    for i in form_data:
+        char_list.append(i[0])
+        index_list.append(int(i[1:].strip()))
+         
+    return [char_list,index_list]
+
+
+def check_word(char_list,words,puzzle,chars):
+    word = "".join(char_list)
+    word_bank = [w.word for w in words]
+    for w in words:
+        if w.word == word or w.word == word[::-1]:
+            w.word_checked = True
+            w.save()
+            w.chars.update(char_checked = True)
+            break
+        
+            
+def check_puzzle_copmleated(puzzle,words):
+    for word in words:
+        if not  word.word_checked:
+            puzzle.grid_checked = False
+            puzzle.save()
+            return ""
+    puzzle.grid_checked = True
+    puzzle.save()
+     
+    
+         
+     
+
+
+     
+     
+     
