@@ -24,7 +24,9 @@
                     value="{{char}}{{char.index}}"
                 />
                 <label for="id{{char.index}}" class="char{{char.index}} flexbox"
-                style="color:{% if char.char_checked %} blue {% else %} green {% endif %}"
+                style="color:{% if char.char_checked %} blue {% else %} green {% endif %};
+                background-color:{% if char.char_checked %}  #093412 {% else %} transperent {% endif %}
+                "
                     >{{char | upper}}</label
                 >
 

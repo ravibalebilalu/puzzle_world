@@ -40,9 +40,10 @@ body{
    
     text-align: center;
     border-radius: 20px;
+    transition: backgoround-color .3s;
 }
 .container{
-      height: 800px;
+      height: 700px;
     width: 600px;
     flex-wrap: wrap;
     
@@ -57,8 +58,12 @@ label{
     width: 45px;
      font-weight: bold;
      font-size: 40px;
+     transition: background-color .2s,font-size .3s;
 }
-
+label:hover{
+    background-color: #455667;
+    font-size: 43px;
+}
 .charinput{
    display: none;
 }
@@ -72,6 +77,12 @@ label{
     color: white;
     font-weight: bold;
     margin-top: 20px;
+    transition:  background-color .3s,font-size .3s;
+ }
+ button:hover{
+    background-color: rgb(39, 95, 39);
+     color: #0ff;
+     
  }
 
 #id0:checked ~  .char0{background-color: rgb(54, 33, 33);}
