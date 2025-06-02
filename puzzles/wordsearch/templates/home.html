@@ -1,13 +1,42 @@
- {% load static %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>wordsearch</title>
-    <link rel="stylesheet" href="{% static 'style.css'%}">
-</head>
-<body>
-    <h2>Shreekrishna</h2>
-</body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>wordsearch</title>
+        <link rel="stylesheet" href="{% static 'style.css'%}" />
+    </head>
+    <body class="flexbox">
+        <h2>Shreekrishna</h2>
+
+       <div class="masterbox flexbox">
+         <div class="mainbox flexbox">
+            <form class="container flexbox" method="POST">
+                {% csrf_token %} {% for char in chars %}
+            
+
+                <input
+                    type="checkbox"
+                    name="characters"
+                    id="id{{char.index}}"
+                    class="charinput"
+                    value="{{char}}-{{char.index}}"
+                />
+                <label for="id{{char.index}}" class="char{{char.index}} flexbox"
+                    >{{char}}</label
+                >
+
+                {% endfor %}
+                <button type="submit">Check</button>
+            </form>
+
+        </div>
+        <div class="words flexbox">
+             {% for word in words %}
+             <p class="word">{{word.word}}</p>
+             {% endfor %}
+        </div>
+       </div>
+    </body>
 </html>
