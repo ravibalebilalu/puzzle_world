@@ -1,18 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
- 
- *{padding: 0;
-margin: 0;
-box-sizing: border-box;
+
+* {
+    padding: 0;
+    margin: 0;
 }
 
-body{
+body {
     width: 100vw;
     background-color: #000;
-     flex-direction: column;
+    flex-direction: column;
     color: #999;
-     font-family: "Poppins", sans-serif;
-     
+    font-family: 'Poppins', sans-serif;
 }
+
+
 .flexbox{
     display: flex;
     justify-content: center;
@@ -20,42 +21,22 @@ body{
 }
 
 .masterbox{
-     
-      
+    flex-direction: row;
       gap: 20px;
 }
 
-
 .mainbox{
-      
   padding: 10px 0px;
     border: 2px solid white;
     flex-wrap: wrap;
-    
+    transform: scale(.9);
 }
- 
-.words{
-    flex-direction: column;
- 
-}
-.word{
-    width: 400px;
-    font-size:40px;
-    font-weight: 800;
-    color: yellow;
-   
-    text-align: center;
-    border-radius: 20px;
-    transition: backgoround-color .3s;
-}
+
 .container{
       height: 700px;
     width: 600px;
     flex-wrap: wrap;
     
-}
-h2{
-    color: blue;
 }
 
 label{
@@ -71,11 +52,11 @@ label:hover{
     background-color: #455667;
     font-size: 43px;
 }
+
 .charinput{
    display: none;
 }
 
- 
  button{
     padding: 4px 5px;
     background-color: green;
@@ -92,150 +73,63 @@ label:hover{
      
  }
 
-#id0:checked ~  .char0{background-color: rgb(54, 33, 33);}
-#id1:checked ~  .char1{background-color: rgb(54, 33, 33);}
-#id2:checked ~  .char2{background-color: rgb(54, 33, 33);}
-#id3:checked ~  .char3{background-color: rgb(54, 33, 33);}
-#id4:checked ~  .char4{background-color: rgb(54, 33, 33);}
-#id5:checked ~  .char5{background-color: rgb(54, 33, 33);}
-#id6:checked ~  .char6{background-color: rgb(54, 33, 33);}
-#id7:checked ~  .char7{background-color: rgb(54, 33, 33);}
-#id8:checked ~  .char8{background-color: rgb(54, 33, 33);}
-#id9:checked ~  .char9{background-color: rgb(54, 33, 33);}
-#id10:checked ~  .char10{background-color: rgb(54, 33, 33);}
-#id11:checked ~  .char11{background-color: rgb(54, 33, 33);}
-#id12:checked ~  .char12{background-color: rgb(54, 33, 33);}
-#id13:checked ~  .char13{background-color: rgb(54, 33, 33);}
-#id14:checked ~  .char14{background-color: rgb(54, 33, 33);}
-#id15:checked ~  .char15{background-color: rgb(54, 33, 33);}
-#id16:checked ~  .char16{background-color: rgb(54, 33, 33);}
-#id17:checked ~  .char17{background-color: rgb(54, 33, 33);}
-#id18:checked ~  .char18{background-color: rgb(54, 33, 33);}
-#id19:checked ~  .char19{background-color: rgb(54, 33, 33);}
-#id20:checked ~  .char20{background-color: rgb(54, 33, 33);}
-#id21:checked ~  .char21{background-color: rgb(54, 33, 33);}
-#id22:checked ~  .char22{background-color: rgb(54, 33, 33);}
-#id23:checked ~  .char23{background-color: rgb(54, 33, 33);}
-#id24:checked ~  .char24{background-color: rgb(54, 33, 33);}
-#id25:checked ~  .char25{background-color: rgb(54, 33, 33);}
-#id26:checked ~  .char26{background-color: rgb(54, 33, 33);}
-#id27:checked ~  .char27{background-color: rgb(54, 33, 33);}
-#id28:checked ~  .char28{background-color: rgb(54, 33, 33);}
-#id29:checked ~  .char29{background-color: rgb(54, 33, 33);}
-#id30:checked ~  .char30{background-color: rgb(54, 33, 33);}
-#id31:checked ~  .char31{background-color: rgb(54, 33, 33);}
-#id32:checked ~  .char32{background-color: rgb(54, 33, 33);}
-#id33:checked ~  .char33{background-color: rgb(54, 33, 33);}
-#id34:checked ~  .char34{background-color: rgb(54, 33, 33);}
-#id35:checked ~  .char35{background-color: rgb(54, 33, 33);}
-#id36:checked ~  .char36{background-color: rgb(54, 33, 33);}
-#id37:checked ~  .char37{background-color: rgb(54, 33, 33);}
-#id38:checked ~  .char38{background-color: rgb(54, 33, 33);}
-#id39:checked ~  .char39{background-color: rgb(54, 33, 33);}
-#id40:checked ~  .char40{background-color: rgb(54, 33, 33);}
-#id41:checked ~  .char41{background-color: rgb(54, 33, 33);}
-#id42:checked ~  .char42{background-color: rgb(54, 33, 33);}
-#id43:checked ~  .char43{background-color: rgb(54, 33, 33);}
-#id44:checked ~  .char44{background-color: rgb(54, 33, 33);}
-#id45:checked ~  .char45{background-color: rgb(54, 33, 33);}
-#id46:checked ~  .char46{background-color: rgb(54, 33, 33);}
-#id47:checked ~  .char47{background-color: rgb(54, 33, 33);}
-#id48:checked ~  .char48{background-color: rgb(54, 33, 33);}
-#id49:checked ~  .char49{background-color: rgb(54, 33, 33);}
-#id50:checked ~  .char50{background-color: rgb(54, 33, 33);}
-#id51:checked ~  .char51{background-color: rgb(54, 33, 33);}
-#id52:checked ~  .char52{background-color: rgb(54, 33, 33);}
-#id53:checked ~  .char53{background-color: rgb(54, 33, 33);}
-#id54:checked ~  .char54{background-color: rgb(54, 33, 33);}
-#id55:checked ~  .char55{background-color: rgb(54, 33, 33);}
-#id56:checked ~  .char56{background-color: rgb(54, 33, 33);}
-#id57:checked ~  .char57{background-color: rgb(54, 33, 33);}
-#id58:checked ~  .char58{background-color: rgb(54, 33, 33);}
-#id59:checked ~  .char59{background-color: rgb(54, 33, 33);}
-#id60:checked ~  .char60{background-color: rgb(54, 33, 33);}
-#id61:checked ~  .char61{background-color: rgb(54, 33, 33);}
-#id62:checked ~  .char62{background-color: rgb(54, 33, 33);}
-#id63:checked ~  .char63{background-color: rgb(54, 33, 33);}
-#id64:checked ~  .char64{background-color: rgb(54, 33, 33);}
-#id65:checked ~  .char65{background-color: rgb(54, 33, 33);}
-#id66:checked ~  .char66{background-color: rgb(54, 33, 33);}
-#id67:checked ~  .char67{background-color: rgb(54, 33, 33);}
-#id68:checked ~  .char68{background-color: rgb(54, 33, 33);}
-#id69:checked ~  .char69{background-color: rgb(54, 33, 33);}
-#id70:checked ~  .char70{background-color: rgb(54, 33, 33);}
-#id71:checked ~  .char71{background-color: rgb(54, 33, 33);}
-#id72:checked ~  .char72{background-color: rgb(54, 33, 33);}
-#id73:checked ~  .char73{background-color: rgb(54, 33, 33);}
-#id74:checked ~  .char74{background-color: rgb(54, 33, 33);}
-#id75:checked ~  .char75{background-color: rgb(54, 33, 33);}
-#id76:checked ~  .char76{background-color: rgb(54, 33, 33);}
-#id77:checked ~  .char77{background-color: rgb(54, 33, 33);}
-#id78:checked ~  .char78{background-color: rgb(54, 33, 33);}
-#id79:checked ~  .char79{background-color: rgb(54, 33, 33);}
-#id80:checked ~  .char80{background-color: rgb(54, 33, 33);}
-#id81:checked ~  .char81{background-color: rgb(54, 33, 33);}
-#id82:checked ~  .char82{background-color: rgb(54, 33, 33);}
-#id83:checked ~  .char83{background-color: rgb(54, 33, 33);}
-#id84:checked ~  .char84{background-color: rgb(54, 33, 33);}
-#id85:checked ~  .char85{background-color: rgb(54, 33, 33);}
-#id86:checked ~  .char86{background-color: rgb(54, 33, 33);}
-#id87:checked ~  .char87{background-color: rgb(54, 33, 33);}
-#id88:checked ~  .char88{background-color: rgb(54, 33, 33);}
-#id89:checked ~  .char89{background-color: rgb(54, 33, 33);}
-#id90:checked ~  .char90{background-color: rgb(54, 33, 33);}
-#id91:checked ~  .char91{background-color: rgb(54, 33, 33);}
-#id92:checked ~  .char92{background-color: rgb(54, 33, 33);}
-#id93:checked ~  .char93{background-color: rgb(54, 33, 33);}
-#id94:checked ~  .char94{background-color: rgb(54, 33, 33);}
-#id95:checked ~  .char95{background-color: rgb(54, 33, 33);}
-#id96:checked ~  .char96{background-color: rgb(54, 33, 33);}
-#id97:checked ~  .char97{background-color: rgb(54, 33, 33);}
-#id98:checked ~  .char98{background-color: rgb(54, 33, 33);}
-#id99:checked ~  .char99{background-color: rgb(54, 33, 33);}
-#id100:checked ~  .char100{background-color: rgb(54, 33, 33);}
-#id101:checked ~  .char101{background-color: rgb(54, 33, 33);}
-#id102:checked ~  .char102{background-color: rgb(54, 33, 33);}
-#id103:checked ~  .char103{background-color: rgb(54, 33, 33);}
-#id104:checked ~  .char104{background-color: rgb(54, 33, 33);}
-#id105:checked ~  .char105{background-color: rgb(54, 33, 33);}
-#id106:checked ~  .char106{background-color: rgb(54, 33, 33);}
-#id107:checked ~  .char107{background-color: rgb(54, 33, 33);}
-#id108:checked ~  .char108{background-color: rgb(54, 33, 33);}
-#id109:checked ~  .char109{background-color: rgb(54, 33, 33);}
-#id110:checked ~  .char110{background-color: rgb(54, 33, 33);}
-#id111:checked ~  .char111{background-color: rgb(54, 33, 33);}
-#id112:checked ~  .char112{background-color: rgb(54, 33, 33);}
-#id113:checked ~  .char113{background-color: rgb(54, 33, 33);}
-#id114:checked ~  .char114{background-color: rgb(54, 33, 33);}
-#id115:checked ~  .char115{background-color: rgb(54, 33, 33);}
-#id116:checked ~  .char116{background-color: rgb(54, 33, 33);}
-#id117:checked ~  .char117{background-color: rgb(54, 33, 33);}
-#id118:checked ~  .char118{background-color: rgb(54, 33, 33);}
-#id119:checked ~  .char119{background-color: rgb(54, 33, 33);}
-#id120:checked ~  .char120{background-color: rgb(54, 33, 33);}
-#id121:checked ~  .char121{background-color: rgb(54, 33, 33);}
-#id122:checked ~  .char122{background-color: rgb(54, 33, 33);}
-#id123:checked ~  .char123{background-color: rgb(54, 33, 33);}
-#id124:checked ~  .char124{background-color: rgb(54, 33, 33);}
-#id125:checked ~  .char125{background-color: rgb(54, 33, 33);}
-#id126:checked ~  .char126{background-color: rgb(54, 33, 33);}
-#id127:checked ~  .char127{background-color: rgb(54, 33, 33);}
-#id128:checked ~  .char128{background-color: rgb(54, 33, 33);}
-#id129:checked ~  .char129{background-color: rgb(54, 33, 33);}
-#id130:checked ~  .char130{background-color: rgb(54, 33, 33);}
-#id131:checked ~  .char131{background-color: rgb(54, 33, 33);}
-#id132:checked ~  .char132{background-color: rgb(54, 33, 33);}
-#id133:checked ~  .char133{background-color: rgb(54, 33, 33);}
-#id134:checked ~  .char134{background-color: rgb(54, 33, 33);}
-#id135:checked ~  .char135{background-color: rgb(54, 33, 33);}
-#id136:checked ~  .char136{background-color: rgb(54, 33, 33);}
-#id137:checked ~  .char137{background-color: rgb(54, 33, 33);}
-#id138:checked ~  .char138{background-color: rgb(54, 33, 33);}
-#id139:checked ~  .char139{background-color: rgb(54, 33, 33);}
-#id140:checked ~  .char140{background-color: rgb(54, 33, 33);}
-#id141:checked ~  .char141{background-color: rgb(54, 33, 33);}
-#id142:checked ~  .char142{background-color: rgb(54, 33, 33);}
-#id143:checked ~  .char143{background-color: rgb(54, 33, 33);}
- 
+ .words{
+    flex-direction: column;
 
+}
+.word{
+    width: 400px;
+    font-size:40px;
+    font-weight: 800;
+    color: yellow;
+   
+    text-align: center;
+    border-radius: 20px;
+    transition: backgoround-color .3s;
+}
+
+ @media screen and (max-width:600px){
+    h2{
+        font-size: 20px;
+    }
+    .masterbox{
+        flex-direction: column;
+         margin: -140px 10px;
+    }
+    .mainbox{
+        transform: scale(.6);
+        margin: 0px;
+    }
+    .words{
+        margin-top: -50px;
+        flex-direction: row;
+        flex-wrap: wrap;
+        transform: scale(.5);
+         
+    }
+    .word{
+    width: 200px;  
+}
+ }
+
+  @media screen and (max-width:1000px){
+    h2{
+        font-size: 30px;
+    }
+    .masterbox{
+         
+        margin-top: -70px;
+        gap: 0px;
+    }
+    .mainbox{
+        transform: scale(.8);
+        margin: 0px;
+    }
+    .words{
+transform: scale(.8);
+    }
+      .word{
+    width: 200px;  
+}
  
+ }
