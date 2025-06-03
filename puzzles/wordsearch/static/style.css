@@ -1,18 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
  
-
-*{
-    padding: 0;
-     margin: 0;
+ *{padding: 0;
+margin: 0;
 }
 
 body{
-    height: 100vh;
     width: 100vw;
     background-color: #000;
      flex-direction: column;
     color: #999;
      font-family: "Poppins", sans-serif;
+     
 }
 .flexbox{
     display: flex;
@@ -21,12 +19,15 @@ body{
 }
 
 .masterbox{
-    gap: 100px;
+    flex-direction: row;
+      gap: 20px;
 }
+
 .mainbox{
-  padding: 20px;
+  padding: 10px 0px;
     border: 2px solid white;
     flex-wrap: wrap;
+    transform: scale(.9);
 }
 .words{
     flex-direction: column;
@@ -34,7 +35,7 @@ body{
 }
 .word{
     width: 400px;
-    font-size:45px;
+    font-size:40px;
     font-weight: 800;
     color: yellow;
    
@@ -51,6 +52,7 @@ body{
 h2{
     color: blue;
 }
+
 label{
     border: 1px solid gray;
     color: green;
@@ -229,4 +231,6 @@ label:hover{
 #id141:checked ~  .char141{background-color: rgb(54, 33, 33);}
 #id142:checked ~  .char142{background-color: rgb(54, 33, 33);}
 #id143:checked ~  .char143{background-color: rgb(54, 33, 33);}
+ 
+
  
