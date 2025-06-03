@@ -85,13 +85,13 @@ def check_puzzle_copmleated(puzzle,words):
         if not  word.word_checked:
             puzzle.grid_checked = False
             puzzle.save()
-            return ""
+            return False
     puzzle.grid_checked = True
     puzzle.save()
+    return True
      
     
-         
-     
+ 
 
 
      

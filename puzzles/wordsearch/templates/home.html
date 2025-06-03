@@ -45,6 +45,15 @@
                 </p>
                 {% endfor %}
             </div>
+            
+            <form  method="post" class="start-form {% if start_game %} hidden {% else %} '' {% endif %}">
+                {% csrf_token %}
+                <input type="checkbox" name="start_puzzle" id="start_puzzle" value="@#$" checked>
+                <label for="start_puzzle" value="@#$"></label>
+                <button type="submit">START</button>
+            </form>
+
+
         </div>
         <script src="{% static 'wordsearch/script.js' %}"></script>
     </body>

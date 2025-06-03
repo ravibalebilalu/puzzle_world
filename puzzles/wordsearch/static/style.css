@@ -88,6 +88,32 @@ label:hover{
     transition: backgoround-color .3s;
 }
 
+ 
+
+.start-form{
+ opacity: 1;
+    position: absolute;
+    
+}
+.start {
+    padding: 20px;
+    border: 5px dotted blue;
+    box-shadow: 30px 30px 100px ,-30px -30px 100px #0ff;
+}
+
+.hidden{
+    display: none;
+}
+ .start-button{
+    padding: 50px;
+    box-shadow: 40px 40px 100px gray,-40px -40px 100px gray;
+    font-weight: bold;
+ }
+
+
+
+
+
  @media screen and (max-width:600px){
     h2{
         font-size: 20px;
