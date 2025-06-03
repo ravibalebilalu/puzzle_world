@@ -2,6 +2,7 @@
  
  *{padding: 0;
 margin: 0;
+box-sizing: border-box;
 }
 
 body{
@@ -19,19 +20,23 @@ body{
 }
 
 .masterbox{
-    flex-direction: row;
+     
+      
       gap: 20px;
 }
 
+
 .mainbox{
+      
   padding: 10px 0px;
     border: 2px solid white;
     flex-wrap: wrap;
-    transform: scale(.9);
+    
 }
+ 
 .words{
     flex-direction: column;
-
+ 
 }
 .word{
     width: 400px;
