@@ -1,0 +1,67 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <style>
+        form{
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        h2{
+            color: blue;
+            font-size: 40px;
+        }
+        h4{
+            font-size: 25px;
+            color: rgb(34, 124, 127);
+        }
+        #id_username,#id_email,#id_password1,#id_password2{
+            font-size: 30px;
+        }
+        .message{
+            font-size: 20px;
+        }
+        input{
+            color: rgb(237, 234, 231);
+            background-color: rgb(64, 53, 40);
+            outline: none;
+            border-radius: 10px;
+            padding: 3px;
+        }
+        input:hover{
+            background-color:rgb(30, 26, 22) ;
+        }
+    </style>
+</head>
+<body>
+  
+
+ 
+
+ 
+ <div class="form">
+      <form class="register-form" method="POST" action="">
+        {% csrf_token %}
+        <h2 class="register-title">REGISTER</h3>
+        <h4>{{form.username.label}}</h4>
+         {{form.username}}
+          <h4>{{form.email.label}}</h4>
+        {{form.email}}
+        <h4>{{form.password1.label}}</h4>
+        {{form.password1}}
+        <h4>{{form.password2.label}}</h4>
+        {{form.password2}}
+        <button type="submit"> Create </button>
+        <p class="message">Already registered? <a href="{% url 'login' %}">Log In</a></p>
+        </form>
+        {{ form.errors }}
+    </div>
+ 
+</body>
+</html>
