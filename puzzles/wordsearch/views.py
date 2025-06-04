@@ -12,8 +12,6 @@ def home(request):
     chars = puzzle.chars.all()
      
 
-  
-    
     if request.method == "POST":
         #start puzzle signal
         if not puzzle.inProgress and not puzzle.grid_checked:
@@ -28,11 +26,7 @@ def home(request):
         char_list ,index_list =  process_form_data(form_data)
         is_word = check_word(char_list,words,puzzle,chars)
         check_puzzle_copmleated(puzzle,words)
-         
-         
 
-    
-    
   
     context = {
         "puzzle":puzzle,
@@ -40,7 +34,5 @@ def home(request):
          "chars":chars,
         }
      
-    print(puzzle.inProgress)
-    print(puzzle.initial_time)
-    print(puzzle.finished_time)
+   
     return render(request,"home.html",context)

@@ -5,8 +5,8 @@ class Puzzle(models.Model):
     col_length = models.PositiveSmallIntegerField(default=12)
     grid_checked = models.BooleanField(default=False)
     inProgress = models.BooleanField(default=False,null=True,blank=True)
-    initial_time = models.DurationField(null=True,blank=True)
-    finished_time = models.DurationField(null=True,blank=True)
+    initial_time = models.DateTimeField(null=True,blank=True)
+    finished_time = models.DateTimeField(null=True,blank=True)
 
     def save(self, *args, **kwargs):
         if not (10 <= self.row_length <= 15):
@@ -23,6 +23,7 @@ class Word(models.Model):
     puzzle = models.ForeignKey(Puzzle, on_delete=models.CASCADE, related_name='words')
     word = models.CharField(max_length=50)
     word_checked = models.BooleanField(default=False)
+    
 
     def __str__(self):
         return self.word

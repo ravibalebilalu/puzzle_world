@@ -1,7 +1,7 @@
 import random
 import string
 from wordsearch.models import Puzzle, Word, Char
-import time
+from datetime import datetime
 
 def generate_grids(puzzle, word_list):
     row_len = puzzle.row_length
@@ -86,15 +86,17 @@ def check_puzzle_copmleated(puzzle,words):
         if not  word.word_checked:
             puzzle.grid_checked = False
             puzzle.save()
+            print("puzzle not compleated")
             return False
+    print("puzzle compleated")
     puzzle.grid_checked = True
-    time_now = time.time()
-    puzzle.finished_time = time_now
+    puzzle.finished_time = datetime.now()
+    puzzle.inProgress = False
+    puzzle.save()
     return True
 
 def initialize_puzzle(puzzle):
-    time_now = time.time()
-    puzzle.initial_time = time_now
+    puzzle.initial_time = datetime.now()
     puzzle.inProgress = True
     puzzle.save()
 
