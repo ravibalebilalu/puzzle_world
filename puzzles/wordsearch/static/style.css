@@ -27,9 +27,20 @@ body {
 
 .mainbox{
   padding: 10px 0px;
-    border: 2px solid white;
+    
     flex-wrap: wrap;
     transform: scale(.9);
+    
+}
+.main-anim{
+animation: mainbox-border 2s linear infinite;
+    transition: border .3s;
+}
+@keyframes mainbox-border{
+    50%{
+        border-color: green;
+    border-style: dotted;
+    }
 }
 
 .container{
@@ -78,14 +89,14 @@ label:hover{
 
 }
 .word{
-    width: 400px;
-    font-size:40px;
+     
+    font-size:30px;
     font-weight: 800;
     color: yellow;
    
     text-align: center;
-    border-radius: 20px;
-    transition: backgoround-color .3s;
+     
+     
 }
 
  

@@ -1,6 +1,7 @@
 import random
 import string
 from wordsearch.models import Puzzle, Word, Char
+import time
 
 def generate_grids(puzzle, word_list):
     row_len = puzzle.row_length
@@ -87,10 +88,16 @@ def check_puzzle_copmleated(puzzle,words):
             puzzle.save()
             return False
     puzzle.grid_checked = True
-    puzzle.save()
+    time_now = time.time()
+    puzzle.finished_time = time_now
     return True
-     
-    
+
+def initialize_puzzle(puzzle):
+    time_now = time.time()
+    puzzle.initial_time = time_now
+    puzzle.inProgress = True
+    puzzle.save()
+
  
 
 

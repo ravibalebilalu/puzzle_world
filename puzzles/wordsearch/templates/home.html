@@ -11,7 +11,9 @@
         <h2>Shreekrishna</h2>
 
         <div class="masterbox flexbox">
-            <div class="mainbox flexbox">
+            <div class="mainbox flexbox {% if puzzle.inProgress %} main-anim {% else %} '' {% endif %}"
+            style="border :5px dotted #004500  "
+            >
                 <form class="container flexbox" method="POST">
                     {% csrf_token %} {% for char in chars %}
 
@@ -32,26 +34,21 @@
                     >
 
                     {% endfor %}
-                    <button type="submit">Check</button>
+                    <button type="submit"> {% if puzzle.inProgress %}  Check{% else %} Start {% endif %} </button>
                 </form>
             </div>
             <div class="words flexbox">
                 {% for word in words %}
                 <p
                     class="word"
-                    style="background-color:{% if word.word_checked%} #004223{% else  %} #420023 {% endif %}"
+                    style="color:{% if word.word_checked%} #004223{% else  %} #420023 {% endif %}"
                 >
                     {{word.word | upper}}
                 </p>
                 {% endfor %}
             </div>
             
-            <form  method="post" class="start-form {% if start_game %} hidden {% else %} '' {% endif %}">
-                {% csrf_token %}
-                <input type="checkbox" name="start_puzzle" id="start_puzzle" value="@#$" checked>
-                <label for="start_puzzle" value="@#$"></label>
-                <button type="submit">START</button>
-            </form>
+            
 
 
         </div>

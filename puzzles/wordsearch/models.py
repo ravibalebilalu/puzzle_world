@@ -4,6 +4,9 @@ class Puzzle(models.Model):
     row_length = models.PositiveSmallIntegerField(default=12)
     col_length = models.PositiveSmallIntegerField(default=12)
     grid_checked = models.BooleanField(default=False)
+    inProgress = models.BooleanField(default=False,null=True,blank=True)
+    initial_time = models.DurationField(null=True,blank=True)
+    finished_time = models.DurationField(null=True,blank=True)
 
     def save(self, *args, **kwargs):
         if not (10 <= self.row_length <= 15):
