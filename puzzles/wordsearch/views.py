@@ -7,7 +7,22 @@ import time
 
 
 def home(request):
+
+    if request.user.is_authenticated:
+        user = request.user
+        puzzle = Puzzle.objects.filter( user=user,grid_checked = False).first()
+        if not puzzle:
+            puzzle = Puzzle.objects.filter(grid_checked=False).first()
+            if puzzle:
+                puzzle.user = user
+                puzzle.save()
+    else:
+        puzzle = Puzzle.objects.filter(grid_checked = False)[1]
+    
+    
+
     puzzle = Puzzle.objects.filter(grid_checked = False)[1]
+     
     words = puzzle.words.all()
     chars = puzzle.chars.all()
      

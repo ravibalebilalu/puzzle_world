@@ -1,4 +1,7 @@
 from django.db import models
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
 
 class Puzzle(models.Model):
     row_length = models.PositiveSmallIntegerField(default=12)
@@ -7,6 +10,9 @@ class Puzzle(models.Model):
     inProgress = models.BooleanField(default=False,null=True,blank=True)
     initial_time = models.DateTimeField(null=True,blank=True)
     finished_time = models.DateTimeField(null=True,blank=True)
+
+    user = models.ForeignKey(User,on_delete=models.CASCADE,null=True,blank=True)
+
 
     def save(self, *args, **kwargs):
         if not (10 <= self.row_length <= 15):

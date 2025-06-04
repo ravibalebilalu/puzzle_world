@@ -19,7 +19,15 @@ body {
     justify-content: center;
     align-items: center;
 }
-
+.navs{
+         gap: 100%;
+}
+.user a:nth-child(1){
+    color: green;
+}
+.user a:nth-child(2){
+    color: red;
+}
 .masterbox{
     flex-direction: row;
       gap: 20px;
