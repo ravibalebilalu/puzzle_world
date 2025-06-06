@@ -82,22 +82,33 @@ def check_word(char_list,words,puzzle,chars):
         
             
 def check_puzzle_copmleated(puzzle,words):
+    # check each word
     for word in words:
         if not  word.word_checked:
             puzzle.grid_checked = False
             puzzle.save()
-            print("puzzle not compleated")
+             
             return False
-    print("puzzle compleated")
-    puzzle.grid_checked = True
-    puzzle.finished_time = datetime.now()
-    puzzle.inProgress = False
-    puzzle.save()
+    if puzzle.user:
+        puzzle.finished_time = datetime.now()
+        puzzle.inProgress = False
+        puzzle.grid_checked = True
+        puzzle.save()
+    else:
+         
+        puzzle.inProgress = False
+        puzzle.grid_checked = False
+        puzzle.save()
+
     return True
 
+ 
+
 def initialize_puzzle(puzzle):
+     
     puzzle.initial_time = datetime.now()
     puzzle.inProgress = True
+
     puzzle.save()
 
  

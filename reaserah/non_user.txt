@@ -1,0 +1,18 @@
+we have created user from djngo inbuilt userclass(i think it is a class) and we save users information in it. 
+similerly we can create a model nonuser!   
+ #a dummy user
+class NonUser(models.Model):
+    pass
+and connect nonuser to model like this: 
+class Puzzle(models.Model):
+    row_length = models.PositiveSmallIntegerField(default=12)
+    col_length = models.PositiveSmallIntegerField(default=12)
+    grid_checked = models.BooleanField(default=False)
+    inProgress = models.BooleanField(default=False,null=True,blank=True)
+    initial_time = models.DateTimeField(null=True,blank=True)
+    finished_time = models.DateTimeField(null=True,blank=True)
+
+    user = models.ForeignKey(User,on_delete=models.CASCADE,null=True,blank=True)
+    nonuser = models.ForeignKey(NonUser,on_delete=models.CASCADE,null=True,blank=True)
+
+do this works  ?

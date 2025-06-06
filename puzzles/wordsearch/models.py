@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth import get_user_model
 
 User = get_user_model()
+ 
 
 class Puzzle(models.Model):
     row_length = models.PositiveSmallIntegerField(default=12)

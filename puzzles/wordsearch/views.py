@@ -2,26 +2,43 @@ from django.shortcuts import render
 from wordsearch.models import Puzzle,Word,Char
 from wordsearch.utils import process_form_data,check_word,check_puzzle_copmleated,initialize_puzzle
 import time
+import random
 
  
 
 
 def home(request):
+    
 
     if request.user.is_authenticated:
+        # get user from request
         user = request.user
-        puzzle = Puzzle.objects.filter( user=user,grid_checked = False).first()
-        if not puzzle:
-            puzzle = Puzzle.objects.filter(grid_checked=False).first()
-            if puzzle:
-                puzzle.user = user
-                puzzle.save()
+        #  load users puzzle 
+        if user:
+            puzzle = Puzzle.objects.filter( user=user,grid_checked = False).first()
+            
+            if not puzzle:
+                # assign a new puzzle for user
+                puzzle = Puzzle.objects.filter(grid_checked=False,user=None).first()
+                if puzzle:
+                    puzzle.user = user
+                    puzzle.save()
+            print(puzzle.user)
+        else:
+            puzzle = Puzzle.objects.filter(grid_checked = False,user=None) .first()
+            print("no user")
     else:
-        puzzle = Puzzle.objects.filter(grid_checked = False)[1]
+        # assign a new puzzle for random play
+         
+        puzzles = Puzzle.objects.filter(grid_checked = False,user=None)  
+        
+        puzzle = random.choice(puzzles)
+
+      
     
     
 
-    puzzle = Puzzle.objects.filter(grid_checked = False)[1]
+     
      
     words = puzzle.words.all()
     chars = puzzle.chars.all()
@@ -50,4 +67,4 @@ def home(request):
         }
      
    
-    return render(request,"home.html",context)
+    return render(request,"home.html",context) 
