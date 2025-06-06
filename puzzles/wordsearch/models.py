@@ -2,7 +2,12 @@ from django.db import models
 from django.contrib.auth import get_user_model
 
 User = get_user_model()
- 
+
+class NonUser(models.Model):
+    session_id = models.CharField(max_length=100,unique=True)
+
+    def __str__(self):
+        return self.session_id
 
 class Puzzle(models.Model):
     row_length = models.PositiveSmallIntegerField(default=12)
@@ -13,6 +18,7 @@ class Puzzle(models.Model):
     finished_time = models.DateTimeField(null=True,blank=True)
 
     user = models.ForeignKey(User,on_delete=models.CASCADE,null=True,blank=True)
+    nonuser = models.ForeignKey(NonUser,on_delete=models.CASCADE,null=True,blank=True)
 
 
     def save(self, *args, **kwargs):

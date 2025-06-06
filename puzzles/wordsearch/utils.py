@@ -89,16 +89,14 @@ def check_puzzle_copmleated(puzzle,words):
             puzzle.save()
              
             return False
-    if puzzle.user:
-        puzzle.finished_time = datetime.now()
-        puzzle.inProgress = False
-        puzzle.grid_checked = True
-        puzzle.save()
-    else:
+     
+    puzzle.finished_time = datetime.now()
+    puzzle.inProgress = False
+    puzzle.grid_checked = True
+    puzzle.save()
+     
          
-        puzzle.inProgress = False
-        puzzle.grid_checked = False
-        puzzle.save()
+        
 
     return True
 
