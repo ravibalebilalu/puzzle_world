@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from wordsearch.models import Puzzle, Word, Char, NonUser
-from wordsearch.utils import process_form_data, check_word, check_puzzle_copmleated, initialize_puzzle
+from wordsearch.utils import process_form_data, check_word, check_puzzle_copmleated, initialize_puzzle,build_puzzle
 import random
 
 def home(request):
@@ -12,6 +12,7 @@ def home(request):
         puzzle = Puzzle.objects.filter(user=user, grid_checked=False).first()
 
         if not puzzle:
+            build_puzzle()
             puzzle = Puzzle.objects.filter(grid_checked=False, user=None, nonuser=None).first()
             if puzzle:
                 puzzle.user = user
@@ -29,6 +30,7 @@ def home(request):
         puzzle = Puzzle.objects.filter(nonuser=nonuser, grid_checked=False).first()
 
         if not puzzle:
+            build_puzzle()
             puzzle = Puzzle.objects.filter(grid_checked=False, user=None, nonuser=None).first()
             if puzzle:
                 puzzle.nonuser = nonuser

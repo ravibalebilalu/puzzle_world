@@ -19,15 +19,16 @@ from gensim.models import Word2Vec
 from gensim.utils import simple_preprocess
 
 from wordsearch.models import Puzzle,Word,Char
+import os
 
-from utils import generate_grids
 
- 
-
-print("entry")
+#from utils import generate_grids
+model_path = os.path.join("artifacts","words.model")
+os.makedirs(os .path.dirname(model_path),exist_ok=True)
+print(model_path)
 
 def build_model():
-    text = abc.raw("science.txt") 
+    text = abc.raw("science.txt") [:50000]
     text = sent_tokenize(text)
     corpus = []
     lemmatizer = WordNetLemmatizer()
@@ -35,43 +36,27 @@ def build_model():
     for sent in text:
         result = re.sub("[^a-zA-Z]"," ",sent)
         result = result.lower().split()
-        result = [lemmatizer.lemmatize(word) for word in result if word not in set(stopwords.words("english"))]
+         
+         
+        result = [lemmatizer.lemmatize(word) for word in result if word not in set(stopwords.words("english")) and 3 < len(word) <= 7   ]
         result = " ".join(result)
         corpus.append(result)
-        print(result)
+        
     words = []
     print("preprocess compleated")
     for sent in corpus:
         sentence = sent_tokenize(sent)
         for word in sentence:
             words.append(simple_preprocess(word))
-            print(word)
+       
     print("tokenising compleated")
-    model = Word2Vec(words,window=5,min_count=2,vector_size=20)
-    print("modelling compleated")
+    model = Word2Vec(words,window=5,min_count=1,vector_size=20)
+   
+    model.save(model_path)
+    print("modell saved!")
     return model
 
-model_words = build_model()
-words = model_words.wv.index_to_key
-print(f'Words : {words}')
-final = [word for word in words if 3 <= len(word) <= 7]
-
-print("choice started")
-
-
- 
- 
+build_model()
  
 
-
-for c in range(200):
-    start = time.time()
-    choice = random.sample(final, 10)
-    print(f"choice : {choice}")
-    puzzle = Puzzle(row_length=12, col_length=12)  # set your desired size
-    puzzle.save()
-    grid, placed_words = generate_grids(puzzle, choice)
-    print("grid and words placed")
-
-    print(f"{c} : saved in {time.time() - start:.2f} sec")
-
+ 

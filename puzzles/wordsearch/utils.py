@@ -2,6 +2,14 @@ import random
 import string
 from wordsearch.models import Puzzle, Word, Char
 from datetime import datetime
+import os
+from gensim.models import Word2Vec
+
+
+
+     
+
+
 
 def generate_grids(puzzle, word_list):
     row_len = puzzle.row_length
@@ -60,6 +68,22 @@ def generate_grids(puzzle, word_list):
             )
 
     return grid,word_list
+
+def build_puzzle():
+     
+    BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    BASE_DIR = "/".join(BASE_DIR.split("/")[:-1])
+
+     
+    model_path = os.path.join( BASE_DIR,"artifacts","words.model")
+    model = Word2Vec.load(model_path)
+    words = model.wv.index_to_key
+    choice = random.sample(words,10)
+    puzzle = Puzzle(row_length=12, col_length=12)
+    puzzle.save()
+    grid, placed_words = generate_grids(puzzle, choice)
+
+     
 
 def process_form_data(form_data):
     char_list,index_list = [],[]
