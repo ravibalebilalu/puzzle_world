@@ -4,6 +4,7 @@ from wordsearch.models import Puzzle, Word, Char
 from datetime import datetime
 import os
 from gensim.models import Word2Vec
+from django.utils import timezone
 
 
 
@@ -85,57 +86,44 @@ def build_puzzle():
 
      
 
+
+
 def process_form_data(form_data):
-    char_list,index_list = [],[]
+    char_list, index_list = [], []
     for i in form_data:
         char_list.append(i[0])
         index_list.append(int(i[1:].strip()))
-         
-    return [char_list,index_list]
+    return [char_list, index_list]
 
-
-def check_word(char_list,words,puzzle,chars):
-    word = "".join(char_list)
-    word_bank = [w.word for w in words]
+def check_word(char_list, words, puzzle, chars):
+    word = "".join(char_list).upper()
+    word_bank = [w.word.upper() for w in words]
     for w in words:
-        if w.word == word or w.word == word[::-1]:
+        if w.word.upper() == word or w.word.upper() == word[::-1]:
             w.word_checked = True
             w.save()
-            w.chars.update(char_checked = True)
-            break
-        
-            
-def check_puzzle_copmleated(puzzle,words):
-    # check each word
+            # Update chars based on indices in char_list
+            for idx, char in enumerate(char_list):
+                char_obj = chars.filter(index=idx).first()
+                if char_obj:
+                    char_obj.char_checked = True
+                    char_obj.save()
+            return True
+    return False
+
+def check_puzzle_completed(puzzle, words):
     for word in words:
-        if not  word.word_checked:
+        if not word.word_checked:
             puzzle.grid_checked = False
             puzzle.save()
-             
             return False
-     
-    puzzle.finished_time = datetime.now()
+    puzzle.finished_time = timezone.now()
     puzzle.inProgress = False
     puzzle.grid_checked = True
     puzzle.save()
-     
-         
-        
-
     return True
 
- 
-
 def initialize_puzzle(puzzle):
-     
-    puzzle.initial_time = datetime.now()
+    puzzle.initial_time = timezone.now()
     puzzle.inProgress = True
-
     puzzle.save()
-
- 
-
-
-     
-     
-     

@@ -32,9 +32,12 @@
             <div class="puzzlebox">
                 <!----------------------------------------------------plaground---------------------------->
                 <div class="playground">
-                    <form class="container" method="POST">
-                        {% csrf_token %} {% for char in chars %}
-
+                    <div class="container">
+                        <canvas
+                            id="selectionCanvas"
+                            style="position: absolute; z-index: 10"
+                        ></canvas>
+                        {% for char in chars %}
                         <input
                             type="checkbox"
                             name="characters"
@@ -45,26 +48,28 @@
                         <label
                             for="id{{char.index}}"
                             class="char{{char.index}} flex-center"
-                            style="color:{% if char.char_checked %}rgb(136, 108, 108)  {% else %} green {% endif %};
-                 
-                "
+                            style="color:{% if char.char_checked %}rgb(136, 108, 108) {% else %} green {% endif %};"
+                            data-index="{{char.index}}"
                             >{{char | upper}}</label
                         >
-
-                        {% endfor %}
-                        <button type="submit">
-                            {% if puzzle.inProgress %} Check{% else %} Start New
-                            {% endif %}
-                        </button>
-                    </form>
+                        {% endfor %} {% if not puzzle.inProgress %}
+                        <form method="POST">
+                            {% csrf_token %}
+                            <button type="submit">Start New</button>
+                        </form>
+                        {% endif %}
+                    </div>
                 </div>
 
                 <!-----------------------------------palyground-------------------------------------->
                 <div class="wordlist">
                     {% for word in words %}
-                    <div class="word" 
-                    style="color:{% if word.word_checked %} green {%  else  %} white {% endif %}"
-                    >{{word | upper}}</div>
+                    <div
+                        class="word"
+                        style="color:{% if word.word_checked %} green {%  else  %} white {% endif %}"
+                    >
+                        {{word | upper}}
+                    </div>
                     {% endfor %}
                 </div>
             </div>

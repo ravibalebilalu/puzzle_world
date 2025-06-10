@@ -3,4 +3,5 @@ from wordsearch import views
 app_name= "wordsearch"
 urlpatterns = [
     path("",views.home,name="home"),
+    path('check-word/', views.check_word_view, name='check_word'),
 ]
