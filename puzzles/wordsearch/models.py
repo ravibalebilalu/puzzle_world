@@ -36,6 +36,7 @@ class Word(models.Model):
     puzzle = models.ForeignKey(Puzzle, on_delete=models.CASCADE, related_name='words')
     word = models.CharField(max_length=50)
     word_checked = models.BooleanField(default=False)
+    word_color = models.CharField(max_length=20,blank=True,null=True)
     
 
     def __str__(self):
@@ -48,6 +49,7 @@ class Char(models.Model):
     character = models.CharField(max_length=1)
     index = models.PositiveSmallIntegerField()  # 0 to 143 max
     char_checked = models.BooleanField(default=False)
+    char_color = models.CharField(max_length=20,blank=True,null=True)
 
     def __str__(self):
         return f"{self.character} "

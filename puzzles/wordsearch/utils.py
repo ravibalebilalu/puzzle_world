@@ -92,16 +92,45 @@ def process_form_data(form_data):
         index_list.append(int(i[1:].strip()))
          
     return [char_list,index_list]
+def select_color(puzzle):
+    COLORS = [
+    '#4682B4',  # Soft Blue
+    '#CD5C5C',  # Warm Red
+    '#228B22',  # Forest Green
+    '#DAA520',  # Golden Yellow
+    '#6A5ACD',  # Deep Purple
+    '#FF6F61',  # Coral Pink
+    '#008080',  # Teal
+    '#9370DB',  # Lavender
+    '#CC5500',  # Burnt Orange
+    '#708090',  # Slate Gray
+    ]
+    words= puzzle.words.all()
+    assigned_colors = [word.word_color for word in words if word.word_color]
+    available_colors = [color for color in COLORS if color not in assigned_colors]
+    if available_colors:
+        return random.choice(available_colors)
+    return  "#faf"
 
+     
 
 def check_word(char_list,words,puzzle,chars):
+    
     word = "".join(char_list)
     word_bank = [w.word for w in words]
     for w in words:
         if w.word == word or w.word == word[::-1]:
             w.word_checked = True
+            selected_color = select_color(puzzle)
+            w.word_color = selected_color
+
             w.save()
             w.chars.update(char_checked = True)
+            w.chars.update(char_color =selected_color )
+             
+
+ 
+            
             break
         
             

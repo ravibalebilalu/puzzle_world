@@ -45,9 +45,7 @@
                         <label
                             for="id{{char.index}}"
                             class="char{{char.index}} flex-center"
-                            style="color:{% if char.char_checked %}rgb(136, 108, 108)  {% else %} green {% endif %};
-                 
-                "
+                            style="color:{% if char.char_checked %} {{char.char_color}}  {% else %}rgb(2, 122, 4) {% endif %};"
                             >{{char | upper}}</label
                         >
 
