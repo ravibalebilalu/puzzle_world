@@ -64,5 +64,5 @@ def home(request):
         "words": words,
         "chars": chars,
     }
-
+    print(puzzle)
     return render(request, "home.html", context)

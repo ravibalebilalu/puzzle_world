@@ -1,68 +1,73 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>wordsearch</title>
-        <link rel="stylesheet" href="{% static 'style.css'%}" />
+        <title>Word Search</title>
+        <link rel="stylesheet" href="{% static 'style.css' %}" />
     </head>
-    <body class="flexbox">
-        <div class="navs flexbox">
-           <a href="{% url 'user'%}">Home</a>
-            <h2>Shreekrishna</h2>
-            <div class="user flexbox">
-                {% if user.is_authenticated %}
-  <p style="width: 200px; font-size: 20px;">Welcome, {{ user.username }}!</p>
-  <a href="{% url 'logout' %}">Logout</a>
-{% else %}
-  <a href="{% url 'login' %}">Login</a>
-{% endif %}
-
+    <body>
+        <div class="mainbox">
+            <div class="navbar">
+                <div class="items flex-center user">
+                    {% if user.is_authenticated %}{{ user | upper}} {% else %} ?
+                    {% endif %}
+                </div>
+                <div class="items flex-center title">Word Search</div>
+                <div class="items flex-center links">
+                    <ul>
+                        {% if user.is_authenticated %}
+                        <li><a href="{% url 'logout' %}">Logout</a></li>
+                        {% else %}
+                        <li><a href="{% url 'login' %}">Login</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
             </div>
-        </div>
+            <input type="checkbox" name="ham" id="ham" />
+            <label for="ham" class="hamberger">&#8803;</label>
 
-        <div class="masterbox flexbox">
-            <div class="mainbox flexbox {% if puzzle.inProgress %} main-anim {% else %} '' {% endif %}"
-            style="border :5px dotted #004500  "
-            >
-                <form class="container flexbox" method="POST">
-                    {% csrf_token %} {% for char in chars %}
+            <div class="puzzlebox">
+                <!----------------------------------------------------plaground---------------------------->
+                <div class="playground">
+                    <form class="container" method="POST">
+                        {% csrf_token %} {% for char in chars %}
 
-                    <input
-                        type="checkbox"
-                        name="characters"
-                        id="id{{char.index}}"
-                        class="charinput"
-                        value="{{char}}{{char.index}}"
-                    />
-                    <label
-                        for="id{{char.index}}"
-                        class="char{{char.index}} flexbox"
-                        style="color:{% if char.char_checked %} blue {% else %} green {% endif %};
-                background-color:{% if char.char_checked %}  #093412 {% else %} transperent {% endif %}
+                        <input
+                            type="checkbox"
+                            name="characters"
+                            id="id{{char.index}}"
+                            class="charinput"
+                            value="{{char}}{{char.index}}"
+                        />
+                        <label
+                            for="id{{char.index}}"
+                            class="char{{char.index}} flex-center"
+                            style="color:{% if char.char_checked %}rgb(136, 108, 108)  {% else %} green {% endif %};
+                 
                 "
-                        >{{char | upper}}</label
-                    >
+                            >{{char | upper}}</label
+                        >
 
+                        {% endfor %}
+                        <button type="submit">
+                            {% if puzzle.inProgress %} Check{% else %} Start New
+                            {% endif %}
+                        </button>
+                    </form>
+                </div>
+
+                <!-----------------------------------palyground-------------------------------------->
+                <div class="wordlist">
+                    {% for word in words %}
+                    <div class="word" 
+                    style="color:{% if word.word_checked %} green {%  else  %} white {% endif %}"
+                    >{{word | upper}}</div>
                     {% endfor %}
-                    <button type="submit"> {% if puzzle.inProgress %}  Check{% else %} Start New {% endif %} </button>
-                </form>
+                </div>
             </div>
-            <div class="words flexbox">
-                {% for word in words %}
-                <p
-                    class="word"
-                    style="color:{% if word.word_checked%} #004223{% else  %} #420023 {% endif %}"
-                >
-                    {{word.word | upper}}
-                </p>
-                {% endfor %}
-            </div>
-            
-            
-
-
         </div>
         <script src="{% static 'wordsearch/script.js' %}"></script>
     </body>

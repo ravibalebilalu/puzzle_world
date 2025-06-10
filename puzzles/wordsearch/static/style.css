@@ -7,174 +7,232 @@
 
 body {
     width: 100vw;
-    background-color: #000;
+    height: 100vh;
+     background-color: rgb(4, 17, 71);
     flex-direction: column;
     color: #999;
     font-family: 'Poppins', sans-serif;
 }
-
-
-.flexbox{
+a {
+    text-decoration: none;
+    color: azure;
+}
+.flex-center {
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.navs{
-         gap: 100%;
+/*  480px: Mobile landscape.
+    768px: Tablet portrait.
+    1024px: Small desktop or tablet landscape.
+    1280px: Medium desktop.
+    1200px: Large laptops and desktops.
+    1441px and up: Extra-large desktops. */
+
+/* ***********************************************   NAVABAR ************************* */
+
+.navbar {
+    height: 40px;
+    width: 100%;
+    background-color: #1e1c1c;
+    display: none;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+    justify-items: center;
+    align-items: center;
 }
-.user a:nth-child(1){
+.hamberger {
+    display: grid;
+    justify-items: end;
+    padding-right: 20px;
+    font-size: 25px;
+    font-weight: bold;
+    background-color: #1e1c1c;
+    color: rgb(142, 138, 121);
+    transition: color 0.3s ease;
+}
+#ham {
+    display: none;
+}
+
+.hamberger:hover {
     color: green;
 }
-.user a:nth-child(2){
-    color: red;
+.mainbox:has(#ham:checked) .navbar {
+    display: grid;
+    position: absolute;
+    transform: scaleX(0.7);
+    transition: transform 1s;
 }
-.masterbox{
-    flex-direction: row;
-      gap: 20px;
+ul {
+    list-style: none;
+}
+li {
+    opacity: 1;
+
+    font-size: 15px;
+    color: rgb(253, 255, 253);
+
+    padding: 0px 5px;
 }
 
-.mainbox{
-  padding: 10px 0px;
-    
-    flex-wrap: wrap;
-    transform: scale(.9);
-    
+.user {
+    font-size: 20px;
+    color: blue;
 }
-.main-anim{
-animation: mainbox-border 2s linear infinite;
-    transition: border .3s;
+.title {
+    font-size: 20px;
+    font-weight: bold;
+    color: cadetblue;
 }
-@keyframes mainbox-border{
-    50%{
-        border-color: green;
-    border-style: dotted;
-    }
+.links {
 }
 
-.container{
-      height: 700px;
-    width: 600px;
-    flex-wrap: wrap;
-    
+/******************************************************* puzzlebox ********************************/
+
+.puzzlebox {
+    background-color: rgb(4, 17, 71);
+    display: grid;
+    grid-template-rows: repeat(12, 1fr);
+    grid-template-columns: repeat(12, 1fr);
+    gap: 30px;
 }
 
-label{
-    border: 1px solid gray;
+.playground {
+    display: grid;
+    grid-row: 2/9;
+    grid-column: 2/11;
+
+     
+    background-color: transparent;
+}
+
+.wordlist {
+    grid-row: 10/12;
+    grid-column: 2/11;
+ 
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    justify-items: start;
+    align-items: center;
+}
+/*******************************form ***********************/
+.charinput {
+    display: none;
+}
+
+label {
+    border: 1px solid rgb(56, 48, 48);
     color: green;
-    height: 54px;
-    width: 45px;
-     font-weight: bold;
-     font-size: 40px;
-     transition: background-color .2s,font-size .3s;
+
+    font-weight: bold;
+    font-size: 1rem;
+    transition: background-color 0.2s, font-size 0.3s;
 }
-label:hover{
+label:hover {
     background-color: #455667;
-    font-size: 43px;
+    color: white;
 }
 
-.charinput{
-   display: none;
+.container {
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(12, 1fr);
+    justify-items: stretch;
+    align-items: stretch;
+    position: relative;
 }
-
- button{
+ button {
+    position: absolute;
+    bottom: -50px;
+    left: 50%;
+    transform: translateX(-50%);
     padding: 4px 5px;
     background-color: green;
     border-radius: 10px;
-    font-size: 30px;
+    font-size: 1rem;
     color: white;
     font-weight: bold;
-    margin-top: 20px;
-    transition:  background-color .3s,font-size .3s;
- }
- button:hover{
-    background-color: rgb(39, 95, 39);
-     color: #0ff;
-     
- }
-
- .words{
-    flex-direction: column;
-
+    transition: background-color 0.3s, font-size 0.3s;
 }
+
+
 .word{
-     
-    font-size:30px;
-    font-weight: 800;
-    color: yellow;
-   
-    text-align: center;
-     
-     
+font-size: 1.1rem;
+color: rgb(255, 255, 255);
 }
 
- 
-
-.start-form{
- opacity: 1;
-    position: absolute;
-    
-}
-.start {
-    padding: 20px;
-    border: 5px dotted blue;
-    box-shadow: 30px 30px 100px ,-30px -30px 100px #0ff;
-}
-
-.hidden{
-    display: none;
-}
- .start-button{
-    padding: 50px;
-    box-shadow: 40px 40px 100px gray,-40px -40px 100px gray;
-    font-weight: bold;
- }
-
-
-
-
-
- @media screen and (max-width:600px){
-    h2{
-        font-size: 20px;
+@media (min-width: 768px) {
+    .hamberger {
+        display: none;
     }
-    .masterbox{
-        flex-direction: column;
-         margin: -140px 10px;
+    .navbar {
+        display: grid;
+        align-content: space-evenly;
+        justify-content: space-evenly;
+        gap: 30%;
     }
-    .mainbox{
-        transform: scale(.6);
-        margin: 0px;
+    ul {
+        display: flex;
     }
-    .words{
-        margin-top: -50px;
-        flex-direction: row;
-        flex-wrap: wrap;
-        transform: scale(.5);
-         
+    .playground {
+        grid-row: 2/10;
+        grid-column: 2/10;
+    }
+
+    .wordlist {
+        grid-row: 10/12;
+        grid-column: 2/10;
+        margin-top: 1rem;
+    }
+    label {
+        font-size: 1.5rem;
+    }
+    button {
+        bottom: -40px;
+         font-size: 1rem;
+        
     }
     .word{
-    width: 200px;  
+        font-size: 1.3rem;
+    }
 }
- }
 
-  @media screen and (max-width:1000px){
-    h2{
-        font-size: 30px;
+@media (min-width: 1024px) {
+    .navbar {
+        display: grid;
+        align-content: space-evenly;
+        justify-content: space-evenly;
+        gap: 30%;
     }
-    .masterbox{
-         
-        margin-top: -70px;
-        gap: 0px;
+    .playground {
+        grid-row: 1/7;
+        grid-column: 1/7;
+        padding: 30px 50px;
     }
-    .mainbox{
-        transform: scale(.8);
-        margin: 0px;
+
+    .wordlist {
+        grid-row: 1/6;
+        grid-column: 8/11;
+        grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+    padding: 30px 0px;
     }
-    .words{
-transform: scale(.8);
+    .container {
+        justify-items: stretch;
+        align-items: stretch;
+    }
+    label {
+        font-size: 2rem;
+    }
+    button {
+        bottom: -80px;
+        
+        font-size: 2rem;
     }
       .word{
-    width: 200px;  
+        font-size: 30px;
+    }
 }
- 
- }
