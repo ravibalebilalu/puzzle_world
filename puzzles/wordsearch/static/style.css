@@ -96,6 +96,7 @@ li {
     grid-template-rows: repeat(12, 1fr);
     grid-template-columns: repeat(12, 1fr);
     gap: 30px;
+    position: relative;
 }
 
 .playground {
@@ -158,6 +159,35 @@ label:hover {
     transition: background-color 0.3s, font-size 0.3s;
 }
 
+.time-taken{
+
+    height: 200px;
+    width: 200px;
+    background-color: rgb(32, 32, 20);
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    top: 30%;
+    left: 30%;
+    box-shadow: 10px 10px 200px #f5c4a3;
+    border-radius: 10px;
+    
+}
+
+.time-taken p:nth-child(1){
+    background-color: green;
+    padding: 5px;
+    border-radius: 20px;
+    font-weight: bold;
+    border-radius: 10px;
+    color: aliceblue;
+}
+.hidden{
+    display: none;
+}
 
 .word{
 font-size: 1.1rem;

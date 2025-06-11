@@ -2,6 +2,7 @@ from django.shortcuts import render
 from wordsearch.models import Puzzle, Word, Char, NonUser
 from wordsearch.utils import process_form_data, check_word, check_puzzle_copmleated, initialize_puzzle,build_puzzle
 import random
+from django.utils import timezone
 
 def home(request):
     puzzle = None
@@ -9,7 +10,13 @@ def home(request):
     if request.user.is_authenticated:
         # Logged-in user
         user = request.user
-        puzzle = Puzzle.objects.filter(user=user, grid_checked=False).first()
+        puzzle = Puzzle.objects.filter(user=user, grid_checked=False,inProgress=True).first()
+        # Before assigning a new puzzle
+    if puzzle and not puzzle.grid_checked and not puzzle.words.filter(word_checked=True).exists():
+        puzzle.delete()  # delete unplayed/incomplete puzzle
+        puzzle = None  # reset for fresh assignment
+
+        
 
         if not puzzle:
             build_puzzle()
@@ -57,12 +64,24 @@ def home(request):
         char_list, index_list = process_form_data(form_data)
         check_word(char_list, words, puzzle, chars)
         check_puzzle_copmleated(puzzle, words)
+    time_taken=0
+    if puzzle.grid_checked:
+        
 
+        initial_time = timezone.make_aware(puzzle.initial_time) if timezone.is_naive(puzzle.initial_time) else puzzle.initial_time
+        finished_time = timezone.make_aware(puzzle.finished_time) if timezone.is_naive(puzzle.finished_time) else puzzle.finished_time
+
+        time_taken = finished_time - initial_time
+        time_taken = round(time_taken.total_seconds()/60,2)
+
+         
+     
     # Context
     context = {
         "puzzle": puzzle,
         "words": words,
         "chars": chars,
+        "time_taken" :time_taken
     }
-    print(puzzle)
+     
     return render(request, "home.html", context)

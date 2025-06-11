@@ -1,14 +1,25 @@
 from django.shortcuts import render,redirect
 from users.models import CustomUser
 from django.contrib.auth import login,authenticate,logout
- 
+import random
 from .forms import CustomUserCreationForm
 
  
 def user(request):
     users = CustomUser.objects.all()
-    print(users)
-    return render(request,"user.html")
+     
+
+    sentences = [ "Sharpen your mind—one word at a time.","Find the hidden. Train the brain.",
+
+     "Play. Learn. Grow.",    "Every word you find makes you smarter.",
+
+     "Puzzle your way to greatness.", "Unlock the power of focus and fun!",
+
+     "Discover words. Discover yourself.", "Turn spare time into brain time.", "Be curious. Be clever. Be unstoppable."]
+    
+    sentence = random.choice(sentences) 
+
+    return render(request,"user.html",{"sentence":sentence})
 
  
 
