@@ -1,77 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User</title>
-    <style>
-        body{
-            background-color: #000;
-            color: #ffe;
-        }
-        h1{
-            text-align: center;
-        }
-        .flexbox{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            font-size: 20px;
-        }
-        a{
-            text-decoration: none;
-        }
-        .wordsearch{
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-             
-        }
-        .wordsearch a{
-            text-align: center;
-            color: rgb(69, 69, 27);
-            font-size: 40px;
-            font-weight: bold;
-             box-shadow: 1px 1px 3px #ffd,-1px -1px 3px #ffd;
-             border-radius: 20px;
-             padding: 5px;
-             animation: play .5s linear infinite;
-        }
-           .wordsearch p{
-            text-align: center;
-            color: rgb(63, 19, 152);
-            font-size: 30px;
-            font-weight: bold;
-           
-        }
-        @keyframes play{
-            50%{
-               
-                 box-shadow: 1px 1px 0px,-1px -1px 0px;
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>User</title>
+        <style>
+            body {
+                background-color: #000;
+                color: #ffe;
             }
-        }
-    </style>
-</head>
-<body>
+            h1 {
+                text-align: center;
+                color: burlywood;
+            }
+            .flexbox {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                font-size: 20px;
+            }
+            a {
+                text-decoration: none;
+            }
+            .wordsearch {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+            .wordsearch .play {
+                text-align: center;
+                color: rgb(69, 69, 27);
+                font-size: 30px;
+                font-weight: bold;
+                box-shadow: 1px 1px 3px #ffd, -1px -1px 3px #ffd;
+                border-radius: 20px;
+                padding: 5px;
+                margin: 0px 10px;
+                animation: play 0.5s linear infinite;
+            }
+            
+            .wordsearch p {
+                text-align: center;
+                color: rgb(63, 19, 152);
+                font-size: 30px;
+                font-weight: bold;
+            }
+            @keyframes play {
+                50% {
+                    box-shadow: 1px 1px 0px, -1px -1px 0px;
+                }
+            }
+            p{
+                margin:20px 4px;
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>PUZZLES</h1>
 
-
-    <h1>PUZZLES</h1>
-   
-
-  <div class="flexbox">
-      <p>Don't have an account?  <a href="{% url 'register' %}">Create here</a></p>
-    <p>Have an account ? <a href="{% url 'login' %}">Login Here</a></p>
-
-  </div>
-  <div class="wordsearch">
-      <a href="{% url 'wordsearch:home' %}"> PLAY WORDSEARCH</a>
-     <p>{{sentence}}</p>
-
-  </div>
- {% if user.is_authenticated %}
-  <a href="{% url 'logout' %}">Logout</a>
- {% endif %}
-</body>
+        <div class="flexbox">
+            <p>
+                Don't have an account?
+                <a href="{% url 'register' %}">Create Here</a>
+            </p>
+            <p>Have an account ? <a href="{% url 'login' %}">Login Here</a></p>
+        </div>
+        <div class="wordsearch">
+            <a class="play" href="{% url 'wordsearch:home' %}"> PLAY WORDSEARCH</a>
+            <p>{{sentence}}</p>
+            {% if user.is_authenticated %}
+            <a href="{% url 'logout' %}">Logout</a>
+            {% endif %}
+        </div>
+    </body>
 </html>

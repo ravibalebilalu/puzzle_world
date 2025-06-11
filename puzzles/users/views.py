@@ -3,12 +3,13 @@ from users.models import CustomUser
 from django.contrib.auth import login,authenticate,logout
 import random
 from .forms import CustomUserCreationForm
+from puzzles.logger import logging
+import time
 
  
 def user(request):
     users = CustomUser.objects.all()
-     
-
+      
     sentences = [ "Sharpen your mind—one word at a time.","Find the hidden. Train the brain.",
 
      "Play. Learn. Grow.",    "Every word you find makes you smarter.",
@@ -28,8 +29,12 @@ def register_view(request):
     if request.method == 'POST':
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
-            form.save()
-            return redirect('login')  # Change as needed
+            user = form.save()
+            logging.info(f"{user.username} created account")
+            return redirect('login')
+        else:
+            logging.warning(f"Failed registration attempt: {form.errors}")
+             
     else:
         form = CustomUserCreationForm()
     return render(request, 'register.html', {'form': form})
@@ -42,6 +47,7 @@ def login_view(request):
         user = authenticate(request, username=username, password=password)
         if user:
             login(request, user)
+            logging.info(f"{user.username} logged in")
             return redirect('user')  # change to your homepage URL name
         else:
             error = "Invalid credentials"
@@ -49,5 +55,10 @@ def login_view(request):
     return render(request, 'login.html')
 
 def logout_view(request):
+    if request.user.is_authenticated:
+        username = request.user.username
+         
+        logging.info(f"{username} logged out")
+        time.sleep(1)
     logout(request)
     return redirect("user")

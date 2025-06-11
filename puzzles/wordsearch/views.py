@@ -3,28 +3,39 @@ from wordsearch.models import Puzzle, Word, Char, NonUser
 from wordsearch.utils import process_form_data, check_word, check_puzzle_copmleated, initialize_puzzle,build_puzzle
 import random
 from django.utils import timezone
+from puzzles.logger import logging
+
+ 
 
 def home(request):
     puzzle = None
+     
 
     if request.user.is_authenticated:
         # Logged-in user
         user = request.user
-        puzzle = Puzzle.objects.filter(user=user, grid_checked=False,inProgress=True).first()
+         
         # Before assigning a new puzzle
     if puzzle and not puzzle.grid_checked and not puzzle.words.filter(word_checked=True).exists():
+        
         puzzle.delete()  # delete unplayed/incomplete puzzle
         puzzle = None  # reset for fresh assignment
+        
+         
 
         
 
         if not puzzle:
             build_puzzle()
+            
+            
             puzzle = Puzzle.objects.filter(grid_checked=False, user=None, nonuser=None).first()
             if puzzle:
                 puzzle.user = user
                 puzzle.save()
-
+               
+    
+        
     else:
         # Guest user → use session to track nonuser
         session_id = request.session.session_key
@@ -42,7 +53,9 @@ def home(request):
             if puzzle:
                 puzzle.nonuser = nonuser
                 puzzle.save()
-
+         
+     
+    
     # Safety check (if no puzzle found at all)
     if not puzzle:
         return render(request, "home.html", {"message": "No puzzles available. Please try later."})
@@ -50,21 +63,37 @@ def home(request):
     # Words and chars
     words = puzzle.words.all()
     chars = puzzle.chars.all()
+    
+    if request.user.is_authenticated:
+        puzzle.user= user
+        puzzle.save()
+    else:
+        puzzle.nonuser = nonuser
+        puzzle.save()
+     
 
     # POST request → process puzzle actions
     if request.method == "POST":
         if not puzzle.inProgress and not puzzle.grid_checked:
             initialize_puzzle(puzzle)
+             
+             
 
         form_data = request.POST.getlist("characters")
 
         if request.POST.getlist("start_puzzle"):
             puzzle_start_signal = request.POST.getlist("start_puzzle")
+            
+            
+          
+            
+            
 
         char_list, index_list = process_form_data(form_data)
         check_word(char_list, words, puzzle, chars)
         check_puzzle_copmleated(puzzle, words)
     time_taken=0
+    
     if puzzle.grid_checked:
         
 
@@ -73,6 +102,7 @@ def home(request):
 
         time_taken = finished_time - initial_time
         time_taken = round(time_taken.total_seconds()/60,2)
+        logging.info(f"{puzzle.user} compleated in {time_taken} minuts")
 
          
      
@@ -83,5 +113,5 @@ def home(request):
         "chars": chars,
         "time_taken" :time_taken
     }
-     
+    
     return render(request, "home.html", context)

@@ -4,6 +4,7 @@ from wordsearch.models import Puzzle, Word, Char
 from datetime import datetime
 import os
 from gensim.models import Word2Vec
+from puzzles.logger import logging
 
 
 
@@ -81,6 +82,7 @@ def build_puzzle():
     choice = random.sample(words,10)
     puzzle = Puzzle(row_length=12, col_length=12)
     puzzle.save()
+    logging.info("New puzzle created")
     grid, placed_words = generate_grids(puzzle, choice)
 
      
@@ -123,14 +125,10 @@ def check_word(char_list,words,puzzle,chars):
             w.word_checked = True
             selected_color = select_color(puzzle)
             w.word_color = selected_color
-
             w.save()
+            
             w.chars.update(char_checked = True)
             w.chars.update(char_color =selected_color )
-             
-
- 
-            
             break
         
             
@@ -147,6 +145,7 @@ def check_puzzle_copmleated(puzzle,words):
     puzzle.inProgress = False
     puzzle.grid_checked = True
     puzzle.save()
+   
      
          
         
@@ -159,7 +158,7 @@ def initialize_puzzle(puzzle):
      
     puzzle.initial_time = datetime.now()
     puzzle.inProgress = True
-
+    logging.info(f"{puzzle.user} started a puzzle")
     puzzle.save()
 
  
