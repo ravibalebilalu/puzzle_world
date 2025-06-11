@@ -1,5 +1,0 @@
-now time to create users app. I created an app named "users"  in parallel to wordsearch app. Users app should contain
- all activities related to users,ex : registration,login,logout etc. as usual we forword step by step . and another thing
-  is : i planed to create an app namely progress,which should contain all stats of user: user score related to puzzles 
-  ,rank etc .after compleating users integration we will start scoring app .
-  Considering our future  plan tell me how to create user model
