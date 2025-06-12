@@ -1,5 +1,5 @@
 from django.urls import path
-from sudoku import views
+from sudokuapp import views
  
 urlpatterns = [
     path("",views.sudoku_view,name="sudoku"),

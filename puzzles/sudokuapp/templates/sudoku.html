@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <link rel="stylesheet" href="  {% static 'sudoku.css' %}" />
+    </head>
+    <body data-sudoku-url="{% url 'sudoku' %}">
+        <form class="mainbox" methhod="post" action="{% url 'sudoku' %}">
+            {% csrf_token %}
+            <div class="playbox">
+                {% for row in puz_ch %} {% for col in row %}
+
+            
+                <div class="col flexbox" data-row="{{ forloop.parentloop.counter0 }}" data-col="{{forloop.counter0}}">
+                    {% if col %}{{col}} {% else %} 0{% endif %}
+                </div>
+                {% endfor %} {% endfor %}
+            </div>
+            <div class="editor">
+                {% for i in "123456789" %}
+                <div class="num" data-val="{{i}}">{{i}}</div>
+                {% endfor %}
+            </div>
+        </form>
+        <script src="{% static 'sudokuapp/sud_script.js' %}"></script>
+    </body>
+</html>
