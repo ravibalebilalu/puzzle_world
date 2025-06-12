@@ -1,0 +1,69 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #000;
+    color: #fff;
+}
+
+form{
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+     gap: 10px;
+     margin-top: 20px;
+}
+button{
+    font-size: 30px;
+    background-color: rgb(5, 90, 136);
+    color: #FF9;
+    border-radius: 16px;
+    font-weight: bold;
+    padding: 5px 10px;
+    outline: none;
+    border: none;
+    transition: background-color .5s,color .5s;
+}
+
+input{
+    font-size: 20px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+}
+ button:hover{
+    background-color:rgb(43, 53, 58) ;
+    color: #FFF;
+}
+.message{
+    margin-top: 20px;
+    
+}
+
+.message a,.home a{
+    
+    text-decoration: none;
+    color : rgb(233, 156, 12);
+    transition: color .5s;
+}
+ .message a:hover{
+    color:rgb(118, 82, 56) ;
+ }
+ .home{
+    margin-top: 20px;
+ }
+ .home a{
+     
+    padding: 5px 8px;
+    border: 2px solid rgb(51, 140, 199);
+     color : rgb(156, 193, 233);
+     border-radius: 10px;
+     
+ }
+  .home a:hover{
+    color:rgb(118, 82, 56) ;
+ }

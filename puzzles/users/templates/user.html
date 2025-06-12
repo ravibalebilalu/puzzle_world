@@ -46,7 +46,9 @@
                 color: rgb(63, 19, 152);
                 font-size: 30px;
                 font-weight: bold;
+                 
             }
+         
             @keyframes play {
                 50% {
                     box-shadow: 1px 1px 0px, -1px -1px 0px;
@@ -63,10 +65,10 @@
 
         <div class="flexbox">
             <p>
-                Don't have an account?
+                Don't have an account?    </p>
                 <a href="{% url 'register' %}">Create Here</a>
-            </p>
-            <p>Have an account ? <a href="{% url 'login' %}">Login Here</a></p>
+        
+            <p>Have an account ?</p> <a style="margin-bottom:20px;" href="{% url 'login' %}">Login Here</a>
         </div>
         <div class="wordsearch">
             <a class="play" href="{% url 'wordsearch:home' %}"> PLAY WORDSEARCH</a>
