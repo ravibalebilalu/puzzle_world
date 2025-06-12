@@ -8,4 +8,5 @@ urlpatterns = [
      
     path("wordsearch/",include("wordsearch.urls",namespace="wordsearch")),
     path("",include("users.urls")),
+    path("sudoku/",include("sudoku.urls" )),
 ]
