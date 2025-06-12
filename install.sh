@@ -6,12 +6,20 @@ source p/bin/activate
 
 pip install --upgrade pip
 
-pip install -r requieremets.txt
+pip install -r requirements.txt
+
+ 
+#### navigaye  puzzles
+cd puzzles/
+# migrateions
+python manage.py makemigrations
+python manage.py migrate
+# navigate to base directory
+cd ..
 
 # train word2vec model
 ./p/bin/python puzzles/wordsearch/model_training.py
-cd puzzles
-
+#### navigaye  puzzles
+cd puzzles/
 # run server
 python manage.py runserver
-
