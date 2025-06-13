@@ -1,63 +1,130 @@
-*{
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
 
-body{
+body {
     background-color: #000;
     color: #fff;
-    
 }
-.flexbox{
+.flexbox {
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.mainbox{
-  
+.mainbox {
     display: grid;
-    grid-template-columns: repeat(15,1fr);
-    grid-template-rows: repeat(15,1fr);
+    grid-template-columns: repeat(15, 1fr);
+    grid-template-rows: repeat(15, 1fr);
     justify-items: center;
     align-items: center;
-   
+    position: relative;
 }
-.playbox{
-        grid-row: 2/10;
-        grid-column: 6/11;
-        justify-items: center;
-        align-items: center;
+.playbox {
+    grid-row: 2/10;
+    grid-column: 6/11;
+    justify-items: center;
+    align-items: center;
     display: grid;
-    grid-template-columns: repeat(9,1fr);
-    grid-template-rows: repeat(9,1fr);
-    gap: 3px 10px;
+    grid-template-columns: repeat(9, 1fr);
+    grid-template-rows: repeat(9, 1fr);
+    gap: 10px 10px;
+    position: relative;
+    pad: 5px;
 }
 
-.col{
-    font-size: 25px;
-      
-    padding: 5px;
+.col {
+    font-size: 20px;
+    border : 1px solid transparent;
+    padding: 2px 5px;
 }
- .editor{
+ 
+.editor {
     border: 1px solid white;
-    background-color: blue;
-    font-size: 22px;
+    background-color: rgb(25, 25, 37);
+    
     gap: 15px;
-grid-row: 7/15;
-grid-column: 6/11;
+    grid-row: 7/15;
+    grid-column: 6/11;
 
-display: grid;
-grid-template-columns: repeat(9,1fr);
-grid-template-rows: repeat((1,1fr));
-justify-items: center;
-align-items: center;
-
- }
- .num{
-     padding: 5px;
- }
-
- .num-sel{
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+    justify-items: center;
+    align-items: center;
+}
+.num {
+    padding: 4px;
+     font-size: 22px;
+     color: #ffe;
+     transition: color .3s;
+}
+.num-ids{
     display: none;
+}
+ .num:hover{
+    color: rgb(132, 169, 242);
  }
+ #id1:checked ~ .num1 ,
+ #id2:checked ~ .num2,
+ #id3:checked ~ .num3,
+ #id4:checked ~ .num4,
+ #id5:checked ~ .num5,
+ #id6:checked ~ .num6,
+ #id7:checked ~ .num7,
+ #id8:checked ~ .num8,
+ #id9:checked ~ .num9
+ {
+    color: rgba(25, 163, 25, 0.492);
+ }
+.notice {
+    width: 300px;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.776);
+    position: absolute;
+    top: 170px;
+    flex-direction: column;
+    border: 1px solid rgba(225, 17, 17, 0.611);
+}
+.notice p {
+    padding: 10px 10px;
+
+    color: green;
+    font-size: 40px;
+}
+.notice button {
+    width: 150px;
+    font-weight: 500;
+    color: #000;
+    font-size: 25px;
+    text-align: center;
+    margin: 10px;
+    border-radius: 10px;
+}
+.hidden {
+    display: none;
+}
+
+
+@media (min-width:500px){
+    .col{
+        font-size: 30px;
+          padding: 2px 8px;
+    }
+    .num {
+    padding: 7px;
+     font-size: 30px;
+}
+}
+
+@media (min-width:800px){
+    .col{
+        font-size: 40px;
+          padding: 2px 8px;
+    }
+    .num {
+    padding: 10px;
+     font-size: 30px;
+}
+}

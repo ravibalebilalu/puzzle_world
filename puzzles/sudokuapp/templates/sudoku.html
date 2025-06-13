@@ -13,18 +13,30 @@
             <div class="playbox">
                 {% for row in puz_ch %} {% for col in row %}
 
-            
-                <div class="col flexbox" data-row="{{ forloop.parentloop.counter0 }}" data-col="{{forloop.counter0}}">
-                    {% if col %}{{col}} {% else %} 0{% endif %}
+                <div
+                    class="col flexbox"
+                    data-row="{{ forloop.parentloop.counter0 }}"
+                    data-col="{{forloop.counter0}}"
+                >
+                    <p style="opacity:{% if col %} 1 {% else %} 0 {% endif %};" class="flexbox">
+                        {% if col %}{{col}} {% else %}0 {% endif %}
+                    </p>
                 </div>
                 {% endfor %} {% endfor %}
             </div>
             <div class="editor">
                 {% for i in "123456789" %}
-                <div class="num" data-val="{{i}}">{{i}}</div>
+                <input type="radio" name="edit" id="id{{i}}" class="num-ids">
+                <label for="id{{i}}" class="num{{i}} num" data-val="{{i}}">{{i}}</label>
                 {% endfor %}
             </div>
+            <!--------------{% if is_completed  %} notice flexbox {% else %} hidden {% endif %}-->
+            <div id="notice" class=" flexbox {% if is_completed  %} notice {% else %} hidden {% endif %}">
+                <p>compleated!</p>
+                <button id="start-new">START NEW</button>
+            </div>
         </form>
+
         <script src="{% static 'sudokuapp/sud_script.js' %}"></script>
     </body>
 </html>
