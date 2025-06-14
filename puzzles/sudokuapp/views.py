@@ -7,7 +7,8 @@ import json
 
 @csrf_exempt
 def sudoku_view(request):
-    puzzle = Puzzle.objects.filter(is_solved = False).first()
+    puzzle = Puzzle()
+    #puzzle = Puzzle.objects.filter(is_solved = False).first()
     
     if not puzzle or puzzle.is_solved:
         new_puzzle = create_puzzle()
