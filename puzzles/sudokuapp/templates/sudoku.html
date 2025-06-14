@@ -8,20 +8,32 @@
         <link rel="stylesheet" href="{% static 'sudoku.css' %}" />
     </head>
     <body  >
-           <h1>SHREEKRISHNA</h1>
+          
         <div class="container">
          
-            <div class="playboard">
+            <form class="playboard"  method="post">
+                {% csrf_token %}
                {% for cell in cells %}
-                <div class="cells">
-                    {% if cell.cell_value %}{{cell.cell_value}}{% else %}0{%endif %}
-                </div>
+
+                 <button type="submit" name="selected" value="{{ cell.cell_index }}-{{ cell.cell_value|default:"" }}"
+                  class="cells flexbox"
+                   style="opacity:{% if cell %} 1 {% else %} 0 {% endif %};"
+                  >
+            {{ cell.cell_value|default:" ." }}
+        </button>
+                   
+            
 
                 {% endfor %} 
-            </div>
-       <div class="editor">
+        </form>
+
+          
+       <form class="editor" method="post">
+        {% csrf_token %}
                 {% for num in "123456789" %}
-                <div>{{num}}</div>
+               <button type="submit" name="number" value="{{num}}" class="nums flexbox">
+            {{  num }}
+        </button>
                 {% endfor %}
             </div> 
         </div>

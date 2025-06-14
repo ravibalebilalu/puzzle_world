@@ -9,7 +9,14 @@ def sudoku_view(request):
     #create_puzzle()  
     puzzle = Puzzle.objects.filter(is_solved=False) .first()
     
-    
+    if request.POST.getlist("selected"):
+        selected_cell = request.POST.get("selected")
+        print(selected_cell)
+         
+    if request.POST.getlist("number"):
+        selected_num = request.POST.get("number")
+        print(selected_num)
+        
     context = {
        "grid"  :puzzle.challenge,
        "cells":puzzle.cells.all(),
