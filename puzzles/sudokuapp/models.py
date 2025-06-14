@@ -20,6 +20,13 @@ class Puzzle(models.Model):
     def __str__(self):
         return self.name
 
+class Cell(models.Model):
+    puzzle = models.ForeignKey(Puzzle, on_delete=models.CASCADE, related_name="cells")
+    cell_value = models.PositiveIntegerField(blank=True, null=True)  # 1 to 9, or null if empty
+    cell_index = models.PositiveSmallIntegerField()  # 0 to 80
+
+    def __str__(self):
+        return f"Cell {self.cell_index} = {self.cell_value}"
 
  
     

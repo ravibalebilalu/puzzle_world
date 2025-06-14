@@ -5,41 +5,25 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Document</title>
-        <link rel="stylesheet" href="  {% static 'sudoku.css' %}" />
+        <link rel="stylesheet" href="{% static 'sudoku.css' %}" />
     </head>
-    <body data-sudoku-url="{% url 'sudoku' %}">
-        <form class="mainbox" methhod="post" action="{% url 'sudoku' %}">
-            {% csrf_token %}
-            <div class="playbox">
-                {% for row in puz_ch %} {% for col in row %}
-
-                <div
-                    class="col flexbox"
-                    data-row="{{ forloop.parentloop.counter0 }}"
-                    data-col="{{forloop.counter0}}"
-                >
-                    <p style="opacity:{% if col %} 1 {% else %} 0 {% endif %};" class="flexbox">
-                        {% if col %}{{col}} {% else %}0 {% endif %}
-                    </p>
+    <body  >
+           <h1>SHREEKRISHNA</h1>
+        <div class="container">
+         
+            <div class="playboard">
+               {% for cell in cells %}
+                <div class="cells">
+                    {% if cell.cell_value %}{{cell.cell_value}}{% else %}0{%endif %}
                 </div>
-                {% endfor %} {% endfor %}
-            </div>
-            <div class="editor">
-                {% for i in "123456789" %}
-                <input type="radio" name="edit" id="id{{i}}" class="num-ids">
-                <label for="id{{i}}" class="num{{i}} num" data-val="{{i}}">{{i}}</label>
-                {% endfor %}
-            </div>
-            <!--------------{% if is_completed  %} notice flexbox {% else %} hidden {% endif %}-->
-            <div id="notice" class=" flexbox {% if is_completed  %} notice {% else %} hidden {% endif %}">
-                
-                <p >compleated in  <span id="time" ></span> </p>
-             
-                
-                <button id="start-new">START NEW</button>
-            </div>
-        </form>
 
-        <script src="{% static 'sudokuapp/sud_script.js' %}"></script>
+                {% endfor %} 
+            </div>
+       <div class="editor">
+                {% for num in "123456789" %}
+                <div>{{num}}</div>
+                {% endfor %}
+            </div> 
+        </div>
     </body>
 </html>
