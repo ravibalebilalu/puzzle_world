@@ -5,7 +5,8 @@ import random
 from django.utils import timezone
 from puzzles.logger import logging
 
- 
+  
+  
 
 def home(request):
     puzzle = None

@@ -31,7 +31,7 @@ body {
     grid-template-rows: repeat(9, 1fr);
     gap: 10px 10px;
     position: relative;
-    pad: 5px;
+    padding: 5px;
 }
 
 .col {
@@ -91,7 +91,14 @@ body {
     padding: 10px 10px;
 
     color: green;
-    font-size: 40px;
+    font-size: 20px;
+}
+.notice p  span{
+    display: block;
+    color: rgb(154, 37, 37);
+    text-align: center;
+    font-weight: bold;
+    font-size:25 ;
 }
 .notice button {
     width: 150px;

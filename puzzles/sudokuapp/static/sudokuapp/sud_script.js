@@ -1,4 +1,4 @@
-// Utility to get CSRF token from cookie
+ // Utility to get CSRF token from cookie
 function getCookie(name) {
     let cookieValue = null;
     if (document.cookie && document.cookie !== '') {
@@ -40,7 +40,9 @@ document.addEventListener('DOMContentLoaded', () => {
     sudokuStyling();
 
     document.getElementById('start-new').addEventListener('click', () => {
-        window.location.reload();
+        const url = new URL(window.location.href);
+        url.searchParams.set("fresh", "1");
+        window.location.href = url.toString();
     });
 
     const sudokuUrl = document.body.dataset.sudokuUrl;
@@ -49,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.col').forEach((cell) => {
         cell.addEventListener('click', () => {
             selectedCell = cell;
-            selectedCell.style.border = "1px solid rgb(4, 17, 4)"
+            selectedCell.style.border = '1px solid rgb(4, 17, 4)';
         });
     });
 
@@ -72,14 +74,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 .then((data) => {
                     if (data.valid) {
                         selectedCell.textContent = val;
-                        selectedCell.style.border = "1px solid  transparent"
+                        selectedCell.style.border = '1px solid transparent';
 
                         if (data.completed) {
-                            const noticeDiv = document.getElementById('notice');
-                            noticeDiv.classList.remove('hidden');
-                            noticeDiv.classList.add('notice');
-                            //window.location.reload();
-                        }
+    const noticeDiv = document.getElementById('notice');
+    noticeDiv.classList.remove('hidden');
+    noticeDiv.classList.add('notice');
+    document.getElementById('time').textContent = data.time_taken + ' seconds';
+
+    setTimeout(() => {
+        window.location.href = window.location.pathname; // removes ?fresh
+    }, 3000);
+}
+
                     }
                 })
                 .catch((err) => console.error('Error:', err));
