@@ -5,59 +5,54 @@
 }
 
 body {
-         background-color: rgb(2, 2, 56);
+    background-color: rgb(2, 2, 56);
     color: #fff;
 }
+
 .flexbox {
     display: flex;
     justify-content: center;
     align-items: center;
 }
- 
 
- .container {
-  display: grid;
-  grid-template-columns: repeat(15,1fr);
-  grid-template-rows: repeat(15,1fr);
- justify-content: center;
-   align-items: center;
-}
-.flexbox{
+.container {
     display: flex;
     justify-content: center;
     align-items: center;
+    min-height: 100vh;
 }
-.playboard {
-   display: grid;
-   justify-content: center;
-   align-items: center;
-    grid-template-columns: repeat(9,1fr);
-  grid-template-rows: repeat(9,1fr);
 
-  grid-row: 2/10;
-  grid-column: 6/11;
-   
+.playboard {
+    display: grid;
+    grid-template-columns: repeat(9, 60px); /* 9 columns */
+    grid-template-rows: repeat(10, 60px);   /* 9 for board + 1 for buttons */
+    gap: 1px;
+}
+
+.cellid {
+    display: none;
 }
 
 .cells {
-     font-size: 30px;
-     border: 1px solid rgb(33, 83, 96);
-      padding:12px 5px;
+    font-size: 30px;
+    border: 1px solid rgb(33, 83, 96);
+    width: 60px;
+    height: 60px;
 }
 
 .editor {
-   grid-row: 10/11;
-   grid-column: 6/11;
-   display: grid;
-    justify-content: center;
-   align-items: center;
-   grid-template-columns: repeat(9,1fr);
-   grid-template-rows: repeat(1,1fr);
+    grid-column: 1 / -1; /* span all 9 columns */
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    gap: 2px;
+    margin-top: 10px;
 }
 
 .nums {
-     font-size: 30px;
-     text-align: center;
-     border: 1px solid rgb(16, 70, 16);
-     padding: 7px 4px;
+    font-size: 24px;
+    padding: 16px 10px;
+    background-color: #003300;
+    color: white;
+    border: none;
+    cursor: pointer;
 }

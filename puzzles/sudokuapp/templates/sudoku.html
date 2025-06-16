@@ -7,35 +7,38 @@
         <title>Document</title>
         <link rel="stylesheet" href="{% static 'sudoku.css' %}" />
     </head>
-    <body  >
-          
+    <body>
         <div class="container">
-         
-            <form class="playboard"  method="post">
-                {% csrf_token %}
-               {% for cell in cells %}
+           
+            <form class="playboard" method="post" action="{% url 'sudoku' %}">
+                {% csrf_token %} {% for cell in cells %}
+                <input
+                    type="radio"
+                    name="selected"
+                    id="cell-id-{{cell.cell_index}}"
+                    class="cellid"
+                    value="{{cell.cell_index}}"
+                />
+                <label for="cell-id-{{cell.cell_index}}" class="cells flexbox"
+                    >{{ cell.cell_value|default:"." }}</label
+                >
 
-                 <button type="submit" name="selected" value="{{ cell.cell_index }}-{{ cell.cell_value|default:"" }}"
-                  class="cells flexbox"
-                   style="opacity:{% if cell %} 1 {% else %} 0 {% endif %};"
-                  >
-            {{ cell.cell_value|default:" ." }}
-        </button>
-                   
-            
-
-                {% endfor %} 
-        </form>
-
-          
-       <form class="editor" method="post">
-        {% csrf_token %}
-                {% for num in "123456789" %}
-               <button type="submit" name="number" value="{{num}}" class="nums flexbox">
-            {{  num }}
-        </button>
                 {% endfor %}
-            </div> 
+
+                <div class="editor">
+                    {% for num in "123456789" %}
+                    <button
+                        type="submit"
+                        name="number"
+                        value="{{num}}"
+                        class="nums flexbox"
+                        value="{{num}}"
+                    >
+                        {{ num }}
+                    </button>
+                    {% endfor %}
+                </div>
+            </form>
         </div>
     </body>
 </html>

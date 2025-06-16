@@ -18,11 +18,34 @@ def create_puzzle():
         for val in row:
             Cell.objects.create(puzzle=puzzle,cell_index=cell_index,cell_value = val)
             cell_index += 1
+    puzzle.inProgress = True
+    puzzle.save()
     
 
      
          
+def check_grid(cell_index,number,puzzle):
+    pu_so = puzzle.solution
+    one_d = [element for sublist in pu_so for element in sublist]
+    if one_d[cell_index] == number:
+         row,col = divmod(cell_index,9)
+         puzzle.challenge[row][col] = number
+         puzzle.save()
 
+         cell = puzzle.cells.get(cell_index=cell_index)
+         cell.cell_value = number
+         cell.save()
+    if puzzle.challenge == puzzle.solution:
+    
+        puzzle.is_solved = True
+        puzzle.inProgress=False
+        puzzle.save()
+         
+        
+          
+    return puzzle
+     
+     
     
 
 

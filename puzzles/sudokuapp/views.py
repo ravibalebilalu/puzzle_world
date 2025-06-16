@@ -1,28 +1,38 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from sudokuapp.models import Puzzle,Cell
-from sudokuapp.sudoku_creater import create_puzzle
+from sudokuapp.sudoku_creater import create_puzzle,check_grid
  
  
 
  
 def sudoku_view(request):
-    #create_puzzle()  
-    puzzle = Puzzle.objects.filter(is_solved=False) .first()
+    if request.method == "POST":
+        puzzle = Puzzle.objects.filter(is_solved=False, inProgress=True).first()
+        cell_index = request.POST.get("selected")
+        number = request.POST.get("number")
+
+        if puzzle and cell_index and number:
+            cell_index, number = int(cell_index), int(number)
+            puzzle = check_grid(cell_index, number, puzzle)
+            puzzle.refresh_from_db()
+
+            if puzzle and puzzle.is_solved:
+                # ✅ Avoid stale object, trigger fresh reload
+                return redirect("sudoku")
+
+    # 📦 Get or create puzzle (ALWAYS)
+    puzzle = Puzzle.objects.filter(is_solved=False, inProgress=True).first()
+    if not puzzle:
+        create_puzzle()
+        puzzle = Puzzle.objects.filter(is_solved=False, inProgress=True).first()
+
     
-    if request.POST.getlist("selected"):
-        selected_cell = request.POST.get("selected")
-        print(selected_cell)
-         
-    if request.POST.getlist("number"):
-        selected_num = request.POST.get("number")
-        print(selected_num)
-        
+    
+
     context = {
-       "grid"  :puzzle.challenge,
-       "cells":puzzle.cells.all(),
-       "puzzle":puzzle
-        
+        "grid": puzzle.challenge,
+        "cells": puzzle.cells.all(),
+        "puzzle": puzzle
     }
 
-   
-    return render(request,"sudoku.html"   ,context) 
+    return render(request, "sudoku.html", context)
