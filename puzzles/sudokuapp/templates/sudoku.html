@@ -30,7 +30,7 @@
                     value="{{cell.cell_index}}"
                 />
                 <label for="cell-id-{{cell.cell_index}}" class="cells flexbox"
-                    >{{ cell.cell_value|default:"." }}</label
+                    ><p class="cv">{{ cell.cell_value|default:"." }}</p></label
                 >
 
                 {% endfor %}
@@ -41,7 +41,7 @@
                         type="submit"
                         name="number"
                         value="{{num}}"
-                        class="nums flexbox"
+                        class="nums flexbox nums{{num}}"
                         value="{{num}}"
                     >
                         {{ num }}
@@ -50,5 +50,7 @@
                 </div>
             </form>
         </div>
+        <script src="{% static 'sudokuapp/sud_script.js' %}"></script>
     </body>
+
 </html>
