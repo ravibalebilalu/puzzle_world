@@ -20,8 +20,9 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
-    position: relative
+    min-height: 50vh;
+    position: relative;
+    margin-top: 60px;
 }
 
 .playboard {
@@ -94,3 +95,25 @@ border: 2px solid yellow;
     display: none;
 }
 
+@media (max-width:600px){
+.container{
+    min-height: 40vh;
+    margin-top: 10px;
+}
+    .playboard {
+    display: grid;
+    grid-template-columns: repeat(9, 30px); /* 9 columns */
+    grid-template-rows: repeat(10, 30px);   /* 9 for board + 1 for buttons */
+    gap: 1px;
+}
+
+    .cells{
+        font-size: 20px;
+        width:30px;
+        height: 30px;
+    }
+    .nums{
+        font-size: 16px;
+    }
+
+}
