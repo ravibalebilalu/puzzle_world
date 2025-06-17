@@ -7,6 +7,7 @@
 body {
     background-color: rgb(2, 2, 56);
     color: #fff;
+    position: relative;
 }
 
 .flexbox {
@@ -20,6 +21,7 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    position: relative
 }
 
 .playboard {
@@ -55,4 +57,34 @@ body {
     color: white;
     border: none;
     cursor: pointer;
+}
+
+.message{
+display: flex;
+flex-direction: column;
+gap: 10px;
+justify-content: center;
+align-items: center;
+position: absolute;
+background-color:#999;
+border: 2px solid yellow;
+    border-radius: 20px;
+}
+.message p{
+    padding: 5px;
+    
+}
+.message p:nth-child(1){font-size: 30px;color: rgb(62, 81, 154);font-weight: 600;}
+.message p:nth-child(2){font-size: 20px;color: rgb(129, 73, 168);font-weight: 600;}
+.message p:nth-child(3){font-size: 30px;color: rgb(218, 80, 80);font-weight: 600;}
+.message button{
+    color: rgb(83, 54, 54);
+    padding: 5px 10px;
+    font-weight: bold;
+    font-size: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+.hidden{
+    display: none;
 }

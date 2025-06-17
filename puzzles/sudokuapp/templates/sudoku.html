@@ -8,8 +8,18 @@
         <link rel="stylesheet" href="{% static 'sudoku.css' %}" />
     </head>
     <body>
-        <div class="container">
            
+        <div class="container">
+       <div class=" {% if puzzle.is_solved %}message {% else %} hidden {% endif %}">
+             <p> PUZZLE  :{{puzzle.id}}</p>
+            <p> Solved in </p>
+            <p>{{time_taken}} Minuts!</p>
+           <form method="post">
+            {% csrf_token %}
+              <button type="submit" name="start-new" value="1">Start New</button>
+
+           </form>
+           </div>
             <form class="playboard" method="post" action="{% url 'sudoku' %}">
                 {% csrf_token %} {% for cell in cells %}
                 <input
