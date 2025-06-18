@@ -1,0 +1,146 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+  background-color: #444;
+    color: #fff;
+}
+
+/*------------------------------------*/
+.navbar {
+    height: 40px;
+    width: 100%;
+    background-color: #1e1c1c;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+    justify-items: center;
+    align-items: center;
+}
+.hamberger {
+    display: none;
+    justify-items: end;
+    padding-right: 20px;
+    font-size: 25px;
+    font-weight: bold;
+    background-color: #1e1c1c;
+    color: rgb(142, 138, 121);
+    transition: color 0.3s ease;
+}
+#ham {
+    display: none;
+}
+
+.hamberger:hover {
+    color: green;
+}
+.mainbox:has(#ham:checked) .navbar {
+    display: grid;
+    position: absolute;
+    transform: scaleX(0.7);
+    transition: transform 1s;
+}
+ul {
+    list-style: none;
+}
+li {
+    opacity: 1;
+
+    font-size: 15px;
+    color: rgb(253, 255, 253);
+
+    padding: 0px 5px;
+}
+
+.user {
+    font-size: 20px;
+    color: blue;
+}
+.title {
+    display: flex;
+    font-size: 20px;
+    font-weight: bold;
+    color: cadetblue;
+}
+.links {
+}
+/*------------------------------------*/
+.container{
+     display: flex;
+     justify-content: center;
+     align-items: center;
+    flex-direction: column;
+    margin: 30px 10px;
+gap: 30px;
+    
+}
+
+
+
+ 
+.user-welcome{
+   
+    color: rgb(30, 4, 65);
+   text-align: center;
+   padding: 4px 10px;
+}
+.flexbox{
+    display: flex;
+    justify-content: space-around;
+    align-items: start;
+}
+.userstats{
+    
+     
+    padding: 10px;
+    background-color: #666;
+        box-shadow: 1px 1px 5px,-1px -1px 5px;
+        border-radius: 10px;
+}
+ .name{
+    padding: 5px;
+    font-size: 30px;
+    color: #982;
+    font-weight: 700;
+ }
+ .time{
+    padding: 4px;
+    font-size: 28px;
+       color: #3c3;
+ }
+ p{
+    font-size: 40px;
+    text-align: center;
+    color: #333;
+    font-weight: bold;
+ }
+ .links a{
+    color: white;
+     text-decoration: none;
+ }
+
+ @media (max-width:600px){
+    p{
+        font-size: 30px;
+    }
+    .navbar{
+        display: none;
+    }
+    .hamberger{
+        display: grid;
+    }
+    body:has(#ham:checked) .navbar {
+    display: grid;
+    position: absolute;
+    transform: scaleX(0.7);
+    transition: transform 1s;
+    gap: 100px;
+}
+ body:has(#ham:checked) .title,body:has(#ham:checked) .user{
+    display: none;
+ }
+ 
+ }

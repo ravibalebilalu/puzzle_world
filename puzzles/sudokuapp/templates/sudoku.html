@@ -8,7 +8,23 @@
         <link rel="stylesheet" href="{% static 'sudoku.css' %}" />
     </head>
     <body>
+           <!-------------------------------------------------------------------->
+ <input type="checkbox" name="ham" id="ham" />
+            <label for="ham" class="hamberger">&#8803;</label>
+ <div class="navbar">
+                <div class="items flex-center user">
+                    {% if user.is_authenticated %}{{ user | upper}} {% else %} ?
+                    {% endif %}
+                </div>
+                <div class="items flex-center title">Word Search</div>
+                <div class="items flex-center links">
+                    <ul>
+                        <li><a href="{% url 'user' %}">Home</a></li>
+                    </ul>
+                </div>
+            </div>
            
+        <!---------------------------------------------------------------------->
         <div class="container">
        <div class=" {% if puzzle.is_solved %}message {% else %} hidden {% endif %}">
              <p> PUZZLE  :{{puzzle.id}}</p>

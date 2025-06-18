@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metrics</title>
+    <link rel="stylesheet" href="{% static 'metrics.css'  %}">
+</head>
+<body>
+
+    <div class="navbar">
+                <div class="items flex-center user">
+                    {% if user.is_authenticated %}{{ user | upper}} {% else %} ?
+                    {% endif %}
+                </div>
+                <div class="items flex-center title">Puzzle World</div>
+                <div class="items flex-center links">
+                    <ul>
+                        <li><a href="{% url 'user' %}">Home</a></li>
+                    </ul>
+                </div>
+            </div>
+            <input type="checkbox" name="ham" id="ham" />
+            <label for="ham" class="hamberger">&#8803;</label>
+
+   <div class="container">
+    
+   
+    
+  
+    
+   
+ <div class="userstats">
+     
+        
+        <p>AVERAGE TIME</p>
+    
+    {% for data in time_av  %}
+     
+    
+   <div class="test flexbox"> <span class="name">{{data.puzzle_name|title}}</span>  <span class="time">  {{data.time_taken|title}}</span></div> 
+      
+     
+    {% endfor %}
+</div>
+    
+    
+   </div>
+</body>
+</html>

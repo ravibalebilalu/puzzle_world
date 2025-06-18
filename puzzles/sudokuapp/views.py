@@ -66,3 +66,4 @@ def sudoku_view(request):
     }
 
     return render(request, "sudoku.html", context)
+ 

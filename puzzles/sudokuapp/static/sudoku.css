@@ -16,6 +16,56 @@ body {
     align-items: center;
 }
 
+.navbar {
+    height: 40px;
+    width: 100%;
+    background-color: #1e1c1c;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+    justify-items: center;
+    align-items: center;
+    margin-top: 0px;
+}
+
+.hamberger {
+    display: none;
+    justify-items: end;
+    padding-right: 20px;
+    font-size: 25px;
+    font-weight: bold;
+    background-color: #1e1c1c;
+    color: rgb(142, 138, 121);
+    transition: color 0.3s ease;
+}
+#ham {
+    display: none;
+}
+
+
+
+ul {
+    list-style: none;
+}
+li {
+    opacity: 1;
+
+    font-size: 15px;
+    color: rgb(253, 255, 253);
+
+    padding: 0px 5px;
+}
+
+.user {
+    font-size: 20px;
+    color: blue;
+}
+.title {
+    font-size: 20px;
+    font-weight: bold;
+    color: cadetblue;
+}
+ /*.........................................*/
 .container {
     display: flex;
     justify-content: center;
@@ -96,6 +146,30 @@ border: 2px solid yellow;
 }
 
 @media (max-width:600px){
+    .hamberger {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 2;
+  }
+
+  .navbar {
+    display: none;
+  }
+
+  #ham:checked ~ .navbar {
+    display: grid;
+    position: absolute;
+    top: -10px;
+    width: 100%;
+    background-color: #1e1c1c;
+    z-index: 1;
+  }
+
+  .hamberger:hover {
+    color: green;
+  }
 .container{
     min-height: 40vh;
     margin-top: 10px;
@@ -117,3 +191,4 @@ border: 2px solid yellow;
     }
 
 }
+

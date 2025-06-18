@@ -9,4 +9,5 @@ urlpatterns = [
     path("wordsearch/",include("wordsearch.urls",namespace="wordsearch")),
     path("",include("users.urls")),
     path("sudoku/",include("sudokuapp.urls" )),
+    path(route="metrics/",view=include("metrics.urls")),
 ]

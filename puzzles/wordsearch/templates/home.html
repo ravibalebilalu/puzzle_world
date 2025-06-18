@@ -18,11 +18,7 @@
                 <div class="items flex-center title">Word Search</div>
                 <div class="items flex-center links">
                     <ul>
-                      
                         <li><a href="{% url 'user' %}">Home</a></li>
-                     
-                        
-                         
                     </ul>
                 </div>
             </div>
@@ -44,35 +40,43 @@
                         />
                         <label
                             for="id{{char.index}}"
-                            class="char{{char.index}} flex-center"
+                            class="char{{char.index}} flex-center char"
                             style="color:{% if char.char_checked %} {{char.char_color}}  {% else %}rgb(2, 122, 4) {% endif %};"
                             >{{char | upper}}</label
                         >
 
                         {% endfor %}
-                        
+
                         <button type="submit">
-                            {% if puzzle.inProgress %} Check{% else %} Start 
-                            {% endif %}
+                            {% if puzzle.inProgress %} Check{% else %} Start {%endif %}
                         </button>
-                       
                     </form>
                 </div>
 
                 <!-----------------------------------palyground-------------------------------------->
                 <div class="wordlist">
                     {% for word in words %}
-                    <div class="word" 
-                    style="color:{% if word.word_checked %} green {%  else  %} white {% endif %}"
-                    >{{word | upper}}</div>
+                    <div
+                        class="word"
+                        style="color:{% if word.word_checked %} green {%  else  %} white {% endif %}"
+                    >
+                        {{word | upper}}
+                    </div>
                     {% endfor %}
                 </div>
             </div>
-             <div class="{% if  puzzle.grid_checked %} time-taken {% else %} hidden {% endif %}" >
-                <p >Congradulations!</p>
-                <p> Compleated in</p>           
-               <p >  <span style="color:red;font-weight:bold;">{{time_taken}}</span> minuts</p>
-                        </div>
+            <div
+                class="{% if puzzle.grid_checked %} time-taken {% else %} hidden {% endif %}"
+            >
+                <p>Congradulations!</p>
+                <p>Compleated in</p>
+                <p>
+                    <span style="color: red; font-weight: bold"
+                        >{{time_taken}}</span
+                    >
+                    minuts
+                </p>
+            </div>
         </div>
         <script src="{% static 'wordsearch/script.js' %}"></script>
     </body>

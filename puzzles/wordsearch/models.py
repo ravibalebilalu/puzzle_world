@@ -10,6 +10,7 @@ class NonUser(models.Model):
         return self.session_id
 
 class Puzzle(models.Model):
+    name = models.CharField(default="wordsearch", max_length=20,null=True,blank=True)
     row_length = models.PositiveSmallIntegerField(default=12)
     col_length = models.PositiveSmallIntegerField(default=12)
     grid_checked = models.BooleanField(default=False)

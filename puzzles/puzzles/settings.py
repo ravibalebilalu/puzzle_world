@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "wordsearch",
     "users",
     'sudokuapp',
+    'metrics',
 ]
 
 MIDDLEWARE = [
