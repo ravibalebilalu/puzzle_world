@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 * {
     padding: 0;
@@ -102,21 +102,22 @@ li {
 .playground {
     display: grid;
     grid-row: 1/4;
-    grid-column: 2/12;
+    grid-column: 2/13;
 margin-top: 20px;
-     
     background-color: transparent;
+    padding: 5px;
 }
 
 .wordlist {
-    grid-row: 4/6;
-    grid-column: 2/11;
+    grid-row: 4/5;
+    grid-column: 1/11;
  
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(4, 1fr);
     justify-items: start;
     align-items: center;
+    margin-top: 20px;
 }
 /*******************************form ***********************/
 .charinput {
@@ -124,18 +125,19 @@ margin-top: 20px;
 }
 
 label {
-    border: 1px solid rgb(56, 48, 48);
-    color: green;
-    font-size: 1.4rem;
- 
+    outline: 3px solid rgb(45, 18, 18);
+    background-color: #fff;
+   
+    height: 2.9rem;
+    width: 2.5rem;
     font-weight: bold;
+    font-size: 2.3rem;
+ margin:0px -2px;
     
-    transition: background-color 0.2s, font-size 0.3s;
+    
+    
 }
-label:hover {
-    background-color: #455667;
-    color: white;
-}
+ 
 
 .container {
     height: 100%;
@@ -191,8 +193,9 @@ label:hover {
 }
 
 .word{
-font-size: 1.1rem;
+font-size: 1.7rem;
 color: rgb(255, 255, 255);
+padding: 0px 35px;
 }
 
 @media (min-width: 768px) {
@@ -219,6 +222,8 @@ color: rgb(255, 255, 255);
         margin-top: 1rem;
     }
     label {
+        height: 2.5rem;
+        width: 2.5rem;
         font-size: 2rem;
     }
     button {
@@ -246,7 +251,7 @@ color: rgb(255, 255, 255);
 
     .wordlist {
         grid-row: 1/6;
-        grid-column: 8/11;
+        grid-column: 9/11;
         grid-template-columns: repeat(1, 1fr);
     grid-template-rows: repeat(10, 1fr);
     padding: 30px 0px;
@@ -256,7 +261,10 @@ color: rgb(255, 255, 255);
         align-items: stretch;
     }
     label {
-        font-size: 2rem;
+        font-size: 3rem;
+         margin: 0px;
+         height: 3.5rem;
+         width: 3.5rem;
     }
     button {
         bottom: -80px;
@@ -266,4 +274,4 @@ color: rgb(255, 255, 255);
       .word{
         font-size: 30px;
     }
-}
+} 

@@ -91,6 +91,7 @@ li {
     border: 1px solid rgb(33, 83, 96);
     width: 60px;
     height: 60px;
+    font-weight: bold;
 }
  
 .editor {
@@ -149,8 +150,8 @@ border: 2px solid yellow;
     .hamberger {
     display: block;
     position: absolute;
-    top: 0;
-    right: 0;
+    top: -10px;
+    right: -10px;
     z-index: 2;
   }
 
@@ -176,18 +177,23 @@ border: 2px solid yellow;
 }
     .playboard {
     display: grid;
-    grid-template-columns: repeat(9, 30px); /* 9 columns */
-    grid-template-rows: repeat(10, 30px);   /* 9 for board + 1 for buttons */
+    grid-template-columns: repeat(9, 46px); /* 9 columns */
+    grid-template-rows: repeat(10, 46px);   /* 9 for board + 1 for buttons */
     gap: 1px;
+    margin-top: 90px;
 }
 
     .cells{
-        font-size: 20px;
-        width:30px;
-        height: 30px;
+        font-size: 40px;
+        width:45px;
+        height: 45px;
+        padding: 3px;
+         color: rgb(255, 255, 255);
+         text-shadow: 1px 1px 1px #000000, -1px -1px 1px #000000;
+         
     }
     .nums{
-        font-size: 16px;
+        font-size: 30px;
     }
 
 }
